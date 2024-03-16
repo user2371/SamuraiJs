@@ -2,6 +2,11 @@ ul li {
   color: rgb(13, 14, 13);
 }
 
+ a {
+  text-decoration: none;
+  color: rgb(80, 71, 71);
+ }
+
 .app-wrapper {
   width: 1200px;
   margin: 0 auto;
