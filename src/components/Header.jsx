@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Styles from "./Header.module.css"
 
 const Header = (props) => {
     return (
-        <header className="header">
+        <header className={Styles.header}>
         <img src="samuraiLogo.png"></img>
         </header>
     )

@@ -1,10 +1,10 @@
 import React from 'react'
-
+import Styles from "./Profile.module.css";
 
 const Profile = (props) => {
     return (
-        <div className="content">
-        <div className="contentTopImg">
+        <div className={Styles.content}>
+        <div className={Styles.contentTopImg}>
         </div>
         <div>Ava + description</div>
         <div>My posts
