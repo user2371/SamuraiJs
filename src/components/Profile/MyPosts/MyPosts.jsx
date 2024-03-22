@@ -3,7 +3,7 @@ import styles from './MyPosts.module.css'
 import Post from './Post/Post';
 
 
-const MyPosts = () => {
+const MyPosts = (props) => {
   return (
     <div>My posts
       <div>
@@ -11,10 +11,8 @@ const MyPosts = () => {
         <button>Add post</button>
       </div>
       <div>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        <Post message ="Hello" likesCount = "15" />
+        <Post message ="How are you" likesCount = "10"/>
       </div>
     </div>
   )

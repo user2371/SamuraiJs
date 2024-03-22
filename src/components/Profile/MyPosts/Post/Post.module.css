@@ -2,6 +2,11 @@
     position: relative;
     padding: 10px;
     display: flex;
+    border: 2px solid #ff8ae1;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    box-shadow: 5px -5px 10px 1px #db6abf;
 }
 
 .avatar img {
@@ -14,15 +19,23 @@
 .text {
     padding-left: 100px;
 }
-.text::after {
-    position: absolute;
-    left: 90%;
-    top: 90%;
-    content: "Like";
-    border: 2px solid black;
-    border-radius: 5px;
-    min-width: 30px;
-    min-height: 30px;
+
+.likesBox  {
+        font-size: 12px;
+        line-height: 25px;
+        color: #ffffff;
+        text-align: center;
+        vertical-align: middle;
+    
+        padding: 3px;
+        position: absolute;
+        left: 90%;
+        top: 50%;
+        border: 2px solid #0cf804;
+        background-color: #3f911f;
+        border-radius: 5px;
+        min-width: 30px;
+        min-height: 30px;
 }
 .red {
     background-color: red;
