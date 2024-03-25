@@ -4,10 +4,10 @@ import MyPosts from './MyPosts/MyPosts'
 
 const Profile = (props) => {
   return (
-    <div className={styles.content}>
+    <div>
       <div className={styles.contentTopImg}></div>
-      <div>Ava + description</div>     
-      <MyPosts /> 
+      <div>Ava + description</div>
+      <MyPosts />
     </div>
   )
 }

@@ -10,7 +10,7 @@ ul li {
   color: rgb(80, 71, 71);
  }
 
-.app-wrapper {
+.appWrapper {
   width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -20,6 +20,12 @@ ul li {
   grid-template-rows: 150px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
+}
+
+.appWrapperContent {
+  grid-area: c;  
+  padding: 20px;
+  background-color: #fdd02e;
 }
 
 

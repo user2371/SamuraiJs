@@ -7,6 +7,7 @@ const Post = (props) => {
             <div className={styles.avatar}>
                 <img src="girlAvatar.png"></img>
             </div>
+            <div className={styles.message}>{props.message}</div>
             <div className={styles.likesBox}>{props.likesCount}</div>
         </div>
     )
