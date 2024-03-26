@@ -3,4 +3,11 @@
     padding: 20px;
     background-color: #F7CAC9;
   }
+
+  a.active {
+    color: rgb(155, 132, 6);
+    font-weight: 700;
+    /* font-size: 110%; */
+  }
+  
   
