@@ -1,3 +1,20 @@
-.red {
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {}
+
+.dialogItem {
     color: red;
+}
+.dialogItem.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.dialogMessages {}
+
+.dialogMessage {
+    color: green;
 }
