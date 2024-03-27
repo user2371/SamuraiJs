@@ -4,10 +4,13 @@
     background-color: #F7CAC9;
   }
 
-  a.active {
+  .active {
     color: rgb(155, 132, 6);
     font-weight: 700;
     /* font-size: 110%; */
   }
   
+  .dialogItemLink.active {
+    color: white;
+  }
   

@@ -2,9 +2,9 @@
   grid-area: h;
   padding: 20px;
   background-color: #ff8ae1;
-  
 }
 
 .header img {
-  width: 100px;
+  width: 200px;
+  box-shadow: 5px 5px 5px 0px black;
 }
