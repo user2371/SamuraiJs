@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from "./Profile.module.css";
 import MyPosts from './MyPosts/MyPosts'
+import AvaSection from './AvaSection/AvaSection';
+
+
 
 const Profile = (props) => {
   return (
     <div>
-      <div className={styles.contentTopImg}></div>
-      <div>Ava + description</div>
+      <AvaSection />
       <MyPosts />
     </div>
   )
