@@ -1,0 +1,13 @@
+.dialogItem {
+    color: red;
+}
+
+.dialogItem .active {
+    color: white;
+    display: inline-block;
+    background-color: rgb(37, 31, 31);
+    padding: 2px 5px;
+    border-radius: 5px;
+    transform: scale(1.1);
+  }
+  
