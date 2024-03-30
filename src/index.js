@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+let postData = [
+  {id: 1, message: "Hi", likesCount: 12,},
+  {id: 2, message: "What's up", likesCount: 0,},
+  {id: 3, message: "Good bye", likesCount: 5,},
+]
+
 let dialogsData = [
   { id: 1, name: "Dimych", },
   { id: 2, name: "Andrey", },
@@ -22,7 +28,7 @@ let messagesData = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App dialogsData={dialogsData} messagesData={messagesData}/>
+    <App dialogsData={dialogsData} messagesData={messagesData} postData={postData}/>
   </React.StrictMode>
 );
 
