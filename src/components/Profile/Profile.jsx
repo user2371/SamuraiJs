@@ -9,7 +9,7 @@ const Profile = (props) => {
   return (
     <div>
       <AvaSection />
-      <MyPosts postData={props.postData}/>
+      <MyPosts profilePage={props.profilePage}/>
     </div>
   )
 }

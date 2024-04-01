@@ -6,7 +6,7 @@ import Post from './Post/Post';
 
 
 const MyPosts = (props) => {
-  let postsComponents = props.postData.map((post) => <Post message ={post.message} likesCount = {post.likesCount}/>)
+  let postsComponents = props.profilePage.postData.map((post) => <Post message ={post.message} likesCount = {post.likesCount}/>)
   return (
     <div>
       <h3>My posts</h3>
