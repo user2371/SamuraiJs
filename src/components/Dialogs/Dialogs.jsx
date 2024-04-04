@@ -5,9 +5,14 @@ import DialogMessage from "./DialogMessage/DialogMessage";
 
 
 const Dialogs = (props) => {
+    let dialogMessagesTextarea = React.createRef()
     let dialogsComponents = props.messagesPage.dialogsData.map((dialog) => <DialogItem id={dialog.id} name={dialog.name} />)
     let messagesComponents = props.messagesPage.messagesData.map((message) => <DialogMessage message={message.message} />)
 
+    let postNewMessage = () => {
+        let newMessageValue = dialogMessagesTextarea.current.value;
+        alert(newMessageValue)
+    }
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogItems}>
@@ -15,6 +20,8 @@ const Dialogs = (props) => {
             </div>
             <div className={styles.dialogMessages}>
                 {messagesComponents}
+                <textarea ref={dialogMessagesTextarea} ></textarea>
+                <button onClick={postNewMessage}>add post</button>
             </div>
         </div>
     )
