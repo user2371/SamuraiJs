@@ -7,11 +7,13 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
   let postsComponents = props.profilePage.postData.map((post) => <Post message ={post.message} likesCount = {post.likesCount}/>)
-
   let newPostElement = React.createRef();
+
   let addPost = () => {
     let text = newPostElement.current.value;
-    alert(text);
+    props.bllAddPost(text)
+
+    alert(text)
   };
 
   return (
