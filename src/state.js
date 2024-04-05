@@ -1,3 +1,5 @@
+import { renderEntireTree } from "./render";
+
 let state = {
     profilePage: {
         postData: [
@@ -30,7 +32,16 @@ export let bllAddPost = (postMessage) =>  {
         message: postMessage,
         likesCount: 0
     };
-    state.profilePage.postData.push(newPost)
+    state.profilePage.postData.push(newPost)    
+    renderEntireTree(state);
 }
 
+export let bllAddDialogsMessage = (message) =>  {
+    let newMessage = {
+        id: 5,
+        message: message,
+    };
+    state.messagesPage.messagesData.push(newMessage)    
+    renderEntireTree(state);
+}
 export default state;
