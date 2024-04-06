@@ -1,5 +1,7 @@
 .post {
     position: relative;
+    word-break: break-word;
+    position: relative;
     padding: 10px;
     display: flex;
     border: 2px solid #ff8ae1;
@@ -18,27 +20,31 @@
 
 .message {
     padding-left: 100px;
+    max-width: 70%;
 }
 
-.likesBox  {
-        font-size: 12px;
-        line-height: 25px;
-        color: #ffffff;
-        text-align: center;
-        vertical-align: middle;
-    
-        padding: 3px;
-        position: absolute;
-        left: 90%;
-        top: 50%;
-        border: 2px solid #0cf804;
-        background-color: #3f911f;
-        border-radius: 5px;
-        min-width: 30px;
-        min-height: 30px;
+.likesBox {
+    position: absolute;
+    min-width: 50px;
+    font-size: 12px;
+    line-height: 25px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+
+    padding: 3px;
+    position: absolute;
+    left: 90%;
+    top: 10%;
+    border: 2px solid #0cf804;
+    background-color: #3f911f;
+    border-radius: 5px;
+    min-width: 30px;
+    min-height: 30px;
 }
+
 .red {
     background-color: red;
     color: white;
     font-weight: bold;
- }
+}

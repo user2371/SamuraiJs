@@ -5,14 +5,14 @@ import reportWebVitals from './reportWebVitals';
 import { bllAddPost } from './state.js';
 import { BrowserRouter} from '../node_modules/react-router-dom/dist/index';
 import { bllAddDialogsMessage } from './state.js';
+import { bllUpdateNewPostText } from './state.js';
 
-
-export let renderEntireTree = (state) => {
-  const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+export let renderEntireTree = (state) => {  
   root.render(
     <BrowserRouter>
     <React.StrictMode>
-      <App state={state} bllAddPost={bllAddPost} bllAddDialogsMessage={bllAddDialogsMessage} />
+      <App state={state} bllAddPost={bllAddPost} bllUpdateNewPostText={bllUpdateNewPostText} bllAddDialogsMessage={bllAddDialogsMessage} />
     </React.StrictMode>
     </BrowserRouter>
   );

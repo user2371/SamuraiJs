@@ -1,6 +1,8 @@
 
 .dialogMessage {
-    width: 200px;
+    min-width: 200px;
+    max-width: 400px;
+    word-wrap: break-word;
     position: relative;
     color: green;
     margin: 10px;
