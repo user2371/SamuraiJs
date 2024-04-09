@@ -7,6 +7,7 @@ import { BrowserRouter} from '../node_modules/react-router-dom/dist/index';
 import { bllAddDialogsMessage } from './state.js';
 import { bllUpdateNewPostText } from './state.js';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let renderEntireTree = (state) => {  
   root.render(
