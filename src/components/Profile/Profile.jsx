@@ -9,7 +9,7 @@ const Profile = (props) => {
   return (
     <div>
       <AvaSection />
-      <MyPosts profilePage={props.profilePage} bllUpdateNewPostText={props.bllUpdateNewPostText} bllAddPost={props.bllAddPost}/>
+      <MyPosts profilePage={props.profilePage} dispatch={props.dispatch}/>
     </div>
   )
 }

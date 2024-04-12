@@ -35,30 +35,27 @@ let store = {
     subscribe(observer) {
         this._callSubscriber = observer;
     },
-
-    bllAddPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        };
-        this._state.profilePage.postData.push(newPost)
-        this._state.profilePage.newPostText = "";
-        this._callSubscriber(this._state);
-    },
-
-    bllUpdateNewPostText(text) {
-        this._state.profilePage.newPostText = text;
-        this._callSubscriber(this._state);
-    },
-
-    bllAddDialogsMessage(message) {
-        let newMessage = {
-            id: 5,
-            message: message,
-        };
-        this._state.messagesPage.messagesData.push(newMessage)
-        this._callSubscriber(this._state);
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            };
+            this._state.profilePage.postData.push(newPost)
+            this._state.profilePage.newPostText = "";
+            this._callSubscriber(this._state);
+        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state.profilePage.newPostText = action.text;
+            this._callSubscriber(this._state);
+        } else if (action.type === "ADD-DIALOGS-MESSAGE") {
+            let newMessage = {
+                id: 5,
+                message: action.message,
+            };
+            this._state.messagesPage.messagesData.push(newMessage)
+            this._callSubscriber(this._state);
+        }
     },
 }
 // window.store = store;

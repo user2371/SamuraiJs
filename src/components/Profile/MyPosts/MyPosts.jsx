@@ -11,11 +11,11 @@ const MyPosts = (props) => {
 
   let addPost = () => {
     debugger
-    props.bllAddPost();
+    props.dispatch({type: "ADD-POST"});
   };
 let onChagePost = () => {
   let text = newPostElement.current.value;
-  props.bllUpdateNewPostText(text)
+  props.dispatch({type: "UPDATE-NEW-POST-TEXT", text: text})
 }
 
   return (

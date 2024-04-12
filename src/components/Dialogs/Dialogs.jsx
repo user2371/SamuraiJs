@@ -5,14 +5,13 @@ import DialogMessage from "./DialogMessage/DialogMessage";
 
 
 const Dialogs = (props) => {
-    debugger
     let dialogMessagesTextarea = React.createRef()
     let dialogsComponents = props.messagesPage.dialogsData.map((dialog) => <DialogItem id={dialog.id} name={dialog.name} />)
     let messagesComponents = props.messagesPage.messagesData.map((message) => <DialogMessage message={message.message} />)
 
     let postNewMessage = () => {
         let newMessageValue = dialogMessagesTextarea.current.value;
-        props.bllAddDialogsMessage(newMessageValue)
+        props.dispatch({type: "ADD-DIALOGS-MESSAGE", message: newMessageValue})
         newMessageValue = "";
     }
     return (
