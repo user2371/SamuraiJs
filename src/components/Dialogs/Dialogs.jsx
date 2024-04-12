@@ -2,6 +2,7 @@ import React, { Children } from "react";
 import styles from "./Dialogs.module.css"
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessage from "./DialogMessage/DialogMessage";
+import { addDialogsMessageActionCreator } from "../../state";
 
 
 const Dialogs = (props) => {
@@ -11,8 +12,8 @@ const Dialogs = (props) => {
 
     let postNewMessage = () => {
         let newMessageValue = dialogMessagesTextarea.current.value;
-        props.dispatch({type: "ADD-DIALOGS-MESSAGE", message: newMessageValue})
-        newMessageValue = "";
+        debugger
+        props.dispatch(addDialogsMessageActionCreator(newMessageValue))
     }
     return (
         <div className={styles.dialogs}>
