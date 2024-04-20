@@ -2,7 +2,7 @@ import React, { Children } from "react";
 import styles from "./Dialogs.module.css"
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessage from "./DialogMessage/DialogMessage";
-import { addDialogsMessageActionCreator } from "../../state";
+import { sendMessageCreator, updateNewMessageTextCreator } from "../../state";
 
 
 const Dialogs = (props) => {
@@ -10,10 +10,17 @@ const Dialogs = (props) => {
     let dialogsComponents = props.messagesPage.dialogsData.map((dialog) => <DialogItem id={dialog.id} name={dialog.name} />)
     let messagesComponents = props.messagesPage.messagesData.map((message) => <DialogMessage message={message.message} />)
 
+    let onNewMessageChange = (evt) => {
+        let text = evt.target.value;
+        props.dispatch(updateNewMessageTextCreator(text))
+    }
+
+    let onSendMessageClick = () => {
+        props.dispatch(sendMessageCreator())
+    }
     let postNewMessage = () => {
         let newMessageValue = dialogMessagesTextarea.current.value;
-        debugger
-        props.dispatch(addDialogsMessageActionCreator(newMessageValue))
+        props.dispatch()
     }
     return (
         <div className={styles.dialogs}>
@@ -21,9 +28,9 @@ const Dialogs = (props) => {
                 {dialogsComponents} 
             </div>
             <div className={styles.dialogMessages}>
-                {messagesComponents}
-                <textarea ref={dialogMessagesTextarea} ></textarea>
-                <button onClick={postNewMessage}>add post</button>
+                <div>{messagesComponents}</div>
+                <div><textarea onChange={onNewMessageChange} value={props.messagesPage.newMessageText}></textarea></div>
+                <button onClick={onSendMessageClick}>add post</button>
             </div>
         </div>
     )
