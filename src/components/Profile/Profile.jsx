@@ -7,9 +7,10 @@ import AvaSection from './AvaSection/AvaSection';
 
 const Profile = (props) => {
   return (
+    
     <div>
       <AvaSection />
-      <MyPosts profilePage={props.profilePage} dispatch={props.dispatch}/>
+      <MyPosts profilePage={props.profilePage} dispatch={props.dispatch} idCounter={props.idCounter}/>
     </div>
   )
 }

@@ -24,6 +24,29 @@
 }
 
 .likesBox {
+    cursor:pointer;
+    position: absolute;
+    min-width: 50px;
+    font-size: 12px;
+    line-height: 25px;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+
+    padding: 3px;
+    position: absolute;
+    left: 90%;
+    top: 10%;
+    border: 2px solid #0cf804;
+    background-color: #3f911f;
+    border-radius: 5px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.disLikesBox {
+    cursor:pointer;
     position: absolute;
     min-width: 50px;
     font-size: 12px;
@@ -34,10 +57,10 @@
 
     padding: 3px;
     position: absolute;
-    left: 90%;
+    left: 95%;
     top: 10%;
-    border: 2px solid #0cf804;
-    background-color: #3f911f;
+    border: 2px solid #f73917;
+    background-color: #e03232;
     border-radius: 5px;
     min-width: 30px;
     min-height: 30px;

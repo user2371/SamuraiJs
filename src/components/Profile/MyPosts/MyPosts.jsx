@@ -1,17 +1,16 @@
 import React from 'react';
 import styles from './MyPosts.module.css'
 import Post from './Post/Post';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../state';
-
-
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../Redux/profile-reducer';
 
 
 const MyPosts = (props) => {
-  let postsComponents = props.profilePage.postData.map((post) => <Post message ={post.message} likesCount = {post.likesCount}/>)
+  let postsComponents = props.profilePage.postData.map((post) => <Post message ={post.message} id={post.id} likesCount = {post.likesCount} dislikesCount={post.dislikesCount} dispatch={props.dispatch} idCounter={props.idCounter}/>)
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator());
+    debugger
+    props.dispatch(addPostActionCreator(props.idCounter + 1));
   };
 let onChagePost = () => {
   let text = newPostElement.current.value;
