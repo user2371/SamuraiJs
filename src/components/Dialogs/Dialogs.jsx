@@ -7,21 +7,18 @@ import { sendMessageCreator, updateNewMessageTextCreator } from "../../redux/mes
 
 const Dialogs = (props) => {
     let dialogMessagesTextarea = React.createRef()
-    let dialogsComponents = props.messagesPage.dialogsData.map((dialog) => <DialogItem id={dialog.id} name={dialog.name} />)
-    let messagesComponents = props.messagesPage.messagesData.map((message) => <DialogMessage message={message.message} />)
+    let dialogsComponents = props.dialogsData.map((dialog) => <DialogItem id={dialog.id} name={dialog.name} />)
+    let messagesComponents = props.messagesData.map((message) => <DialogMessage message={message.message} />)
 
-    let onNewMessageChange = (evt) => {
+    let newMessageChange = (evt) => {
         let text = evt.target.value;
-        props.dispatch(updateNewMessageTextCreator(text))
+        props.onNewMessageChange(text)
     }
 
-    let onSendMessageClick = () => {
-        props.dispatch(sendMessageCreator())
+    let sendMessageClick = () => {
+        props.onSendMessageClick()
     }
-    let postNewMessage = () => {
-        let newMessageValue = dialogMessagesTextarea.current.value;
-        props.dispatch()
-    }
+    
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogItems}>
@@ -29,8 +26,8 @@ const Dialogs = (props) => {
             </div>
             <div className={styles.dialogMessages}>
                 <div>{messagesComponents}</div>
-                <div><textarea onChange={onNewMessageChange} value={props.messagesPage.newMessageText}></textarea></div>
-                <button onClick={onSendMessageClick}>add post</button>
+                <div><textarea onChange={newMessageChange} value={props.newMessageText}></textarea></div>
+                <button onClick={sendMessageClick}>add post</button>
             </div>
         </div>
     )

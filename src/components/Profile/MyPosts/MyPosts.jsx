@@ -5,28 +5,26 @@ import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../r
 
 
 const MyPosts = (props) => {
-  let postsComponents = props.profilePage.postData.map((post) => <Post message ={post.message} id={post.id} likesCount = {post.likesCount} dislikesCount={post.dislikesCount} dispatch={props.dispatch} idCounter={props.idCounter}/>)
+  let postsComponents = props.postData.map((post) => <Post onLikeClick={props.onLikeClick} message ={post.message} id={post.id} likesCount = {post.likesCount} dislikesCount={post.dislikesCount} idCounter={props.idCounter}/>)
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    debugger
-    props.dispatch(addPostActionCreator(props.idCounter + 1));
+    props.onAddPost();
   };
-let onChagePost = () => {
+let chagePost = () => {
   let text = newPostElement.current.value;
-  props.dispatch(updateNewPostTextActionCreator(text))
+  props.onChangePost(text);
 }
 
   return (
     <div>
       <h3>My posts</h3>
       <div>
-        <textarea ref={newPostElement}  onChange={onChagePost} value={props.profilePage.newPostText}></textarea>
-        
+        <textarea ref={newPostElement}  onChange={chagePost} value={props.newPostText}></textarea>        
         <button onClick={addPost}>Add post</button>
       </div>
       <div>
-        {postsComponents}        
+         {postsComponents}    
       </div>
     </div>
   )

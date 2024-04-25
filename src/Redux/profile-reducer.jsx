@@ -30,6 +30,7 @@ const profileReducer = (state = initialState, action) => {
             state.newPostText = action.text;
             return state;
         case UPDATE_LIKES_COUNT:
+            debugger
             state.postData[action.id].likesCount += 1;
             return state
         default:

@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './Post.module.css'
 import { likesUpdateCreator } from '../../../../redux/profile-reducer';
+
 const Post = (props) => {
-    const onLikeClick = () => {
-        props.dispatch(likesUpdateCreator(props.id));
+    debugger
+    const likeClick = () => {
+        props.onLikeClick(props.id);
     }
     return (
         <div className={styles.post}>
@@ -11,7 +13,7 @@ const Post = (props) => {
                 <img src="girlAvatar.png"></img>
             </div>
             <div className={styles.message}>{props.message}</div>
-            <div className={styles.likesBox} onClick={onLikeClick}>{props.likesCount} </div>
+            <div className={styles.likesBox} onClick={likeClick}>{props.likesCount} </div>
             <div className={styles.disLikesBox}>{props.dislikesCount}</div>
         </div>
     )
