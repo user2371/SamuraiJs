@@ -1,5 +1,5 @@
 import './index.css';
-import store from './state.js';
+import store from './redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from '../node_modules/react-router-dom/dist/index';

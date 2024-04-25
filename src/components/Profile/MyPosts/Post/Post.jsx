@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Post.module.css'
-import { likesUpdateCreator } from '../../../../Redux/likes-reducer';
+import { likesUpdateCreator } from '../../../../redux/profile-reducer';
 const Post = (props) => {
     const onLikeClick = () => {
         props.dispatch(likesUpdateCreator(props.id));

@@ -33,16 +33,21 @@
     text-align: center;
     vertical-align: middle;
     user-select: none;
-
+    box-shadow: 0px 0px 5px 0px grey;
     padding: 3px;
     position: absolute;
     left: 90%;
     top: 10%;
-    border: 2px solid #0cf804;
     background-color: #3f911f;
     border-radius: 5px;
     min-width: 30px;
     min-height: 30px;
+}
+.likesBox:hover {
+    transform: scale(1.1);
+}
+.likesBox:active {
+    box-shadow: 0px 0px 5px 0px #0cf804 inset;
 }
 
 .disLikesBox {
@@ -64,6 +69,10 @@
     border-radius: 5px;
     min-width: 30px;
     min-height: 30px;
+}
+
+.disLikesBox:hover {
+    transform: scale(1.1);
 }
 
 .red {

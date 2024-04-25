@@ -1,6 +1,5 @@
-import likesReducer from "./Redux/likes-reducer";
-import messagesReducer from "./Redux/messages-reducer";
-import profileReducer from "./Redux/profile-reducer";
+import messagesReducer from "./redux/messages-reducer";
+import profileReducer from "./redux/profile-reducer";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
@@ -48,7 +47,6 @@ let store = {
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.messagesPage = messagesReducer(this._state.messagesPage, action);
-        this._state.profilePage = likesReducer(this._state.profilePage, action)
         this._callSubscriber(this._state);
     },
 }
