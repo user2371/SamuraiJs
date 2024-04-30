@@ -5,15 +5,18 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from '../node_modules/react-router-dom/dist/index';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import StoreContext from './StoreContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-export let renderEntireTree = (state) => {  
+export let renderEntireTree = (state) => {
   root.render(
     <BrowserRouter>
-    <React.StrictMode>
-      <App store={store} />
-    </React.StrictMode>
+      <React.StrictMode>
+        <StoreContext.Provider value={store}>
+          <App />
+        </StoreContext.Provider>
+      </React.StrictMode>
     </BrowserRouter>
   );
 }

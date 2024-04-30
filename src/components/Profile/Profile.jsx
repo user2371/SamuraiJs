@@ -9,7 +9,7 @@ const Profile = (props) => {
   return (    
     <div>
       <AvaSection />
-      <MyPostsContainer store={props.store}/>
+      <MyPostsContainer/>
     </div>
   )
 }
