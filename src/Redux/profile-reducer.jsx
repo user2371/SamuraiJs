@@ -6,40 +6,51 @@ const UPDATE_LIKES_COUNT = "UPDATE-LIKES-COUNT";
 const initialState = {
     postData: [
         { id: 0, message: "Hi", likesCount: 12, dislikesCount: 0, },
-        { id: 1, message: "What's up", likesCount: 0, dislikesCount: 0,},
-        { id: 2, message: "Good bye", likesCount: 5, dislikesCount: 0,},
+        { id: 1, message: "What's up", likesCount: 0, dislikesCount: 0, },
+        { id: 2, message: "Good bye", likesCount: 5, dislikesCount: 0, },
     ],
     idCounter: 2,
     newPostText: "",
 };
 
-const profileReducer = (state = initialState, action) => {    
+const profileReducer = (state = initialState, action) => {
+    let stateCopy;
     switch (action.type) {
         case ADD_POST:
+
+            stateCopy = { ...state };
+            stateCopy.postData = [...state.postData];            
+            stateCopy.idCounter += 1;
             let newPost = {
-                id: action.id,
-                message: state.newPostText,
+                id: stateCopy.idCounter,
+                message: stateCopy.newPostText,
                 likesCount: 0,
                 dislikesCount: 3,
             };
-            state.postData.push(newPost)
-            state.newPostText = "";
-            state.idCounter = state.idCounter + 1;
-            return state;
+            stateCopy.postData.push(newPost)
+            stateCopy.newPostText = "";
+            //state.postData.push(newPost)
+            //state.newPostText = "";
+            //state.idCounter = state.idCounter + 1;
+            return stateCopy;
         case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.text;
-            return state;
+            stateCopy = { ...state };
+            stateCopy.newPostText = action.text;
+            return stateCopy;
         case UPDATE_LIKES_COUNT:
-            debugger
-            state.postData[action.id].likesCount += 1;
-            return state
+            stateCopy = {...state};
+            stateCopy.postData = [...state.postData];
+            stateCopy.postData[action.id] = {...state.postData[action.id]};
+            stateCopy.postData[action.id].likesCount = stateCopy.postData[action.id].likesCount + 1;
+            //state.postData[action.id].likesCount += 1;
+            return stateCopy
         default:
-            return state;           
+            return state;
     }
-}    
+}
 
-export let addPostActionCreator = (id) => {
-    return { type: ADD_POST, id: id }
+export let addPostActionCreator = () => {
+    return { type: ADD_POST }
 }
 
 export let updateNewPostTextActionCreator = (text) => {
@@ -49,7 +60,7 @@ export let updateNewPostTextActionCreator = (text) => {
     }
 }
 export const likesUpdateCreator = (id) => {
-    return {type: UPDATE_LIKES_COUNT, id: id}
+    return { type: UPDATE_LIKES_COUNT, id: id }
 };
 
 export default profileReducer;

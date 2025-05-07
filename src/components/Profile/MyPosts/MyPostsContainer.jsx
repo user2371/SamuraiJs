@@ -3,42 +3,36 @@ import styles from './MyPosts.module.css'
 import Post from './Post/Post';
 import { addPostActionCreator, likesUpdateCreator, updateNewPostTextActionCreator } from '../../../redux/profile-reducer';
 import MyPosts from './MyPosts';
-import StoreContext from '../../../StoreContext';
+import { connect } from '../../../../node_modules/react-redux/dist/react-redux';
 
 
 
-const MyPostsContainer = (props) => {
 
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        let state = store.getState();
 
-        let onAddPost = () => {
-          store.dispatch(addPostActionCreator(state.profilePage.idCounter + 1));
-        };
+const mapStateToProps = (state) => {
+  return {
+    postData: state.profilePage.postData,
+    newPostText: state.profilePage.newPostText,
+    idCounter: state.profilePage.idCounter
+  }
+};
 
-        let onChangePost = (text) => {
-          store.dispatch(updateNewPostTextActionCreator(text))
-        }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddPost  () {
+      dispatch(addPostActionCreator());
+    },
+    onChangePost(text) {
+      dispatch(updateNewPostTextActionCreator(text))
+    },
 
-        let onLikeClick = (id) => {
-          store.dispatch(likesUpdateCreator(id))
-        }
-        return (
-          <MyPosts
-            onAddPost={onAddPost}
-            onChangePost={onChangePost}
-            postData={state.profilePage.postData}
-            newPostText={state.profilePage.newPostText}
-            onLikeClick={onLikeClick}
-          />
-        )
-      }
-      }
-    </StoreContext.Consumer>
-  )
+    onLikeClick(id) {
+      dispatch(likesUpdateCreator(id))
+    }
+  }
 
-}
+};
+
+let MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
 export default MyPostsContainer;
