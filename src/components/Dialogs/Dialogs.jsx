@@ -4,14 +4,11 @@ import DialogItem from "./DialogItem/DialogItem";
 import DialogMessage from "./DialogMessage/DialogMessage";
 
 
-const Dialogs = (props) => {
-    debugger
-    
-    let dialogsComponents = props.dialogsData.map((dialog) => <DialogItem id={dialog.id} name={dialog.name} />)
-    let messagesComponents = props.messagesData.map((message) => <DialogMessage message={message.message} />)
+const Dialogs = (props) => {    
+    let dialogsComponents = props.dialogsData.map((dialog) => <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />)
+    let messagesComponents = props.messagesData.map((message) => <DialogMessage key={message.id} message={message.message} />)
 
     let updateMessage = (evt) => {
-        debugger
         let text = evt.target.value;
         props.onNewMessageChange(text)
     }
@@ -20,7 +17,6 @@ const Dialogs = (props) => {
     let sendMessageClick = () => {
         props.onSendMessageClick()
     }
-    debugger
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogItems}>
