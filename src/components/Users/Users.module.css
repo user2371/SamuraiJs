@@ -1,0 +1,42 @@
+.userAvatar img {
+    width: 100px;
+}
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #ff8ae1ed;
+    box-shadow: 5px -5px 10px 1px #db6abf;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.user:hover {
+    transform: scale(1.02);
+    background-color: grey;
+}
+
+.userLeftSide {
+}
+
+.followBtnContainer {
+   
+}
+
+.followBtnContainer button {
+    display: block;
+    margin: 0 auto;
+}
+
+.userDescription {
+    display: flex;
+    flex-grow: 1;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.location {
+    padding: 10px;
+    text-align: center;
+}
+

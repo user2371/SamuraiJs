@@ -3,9 +3,9 @@ import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
 import { BrowserRouter, Routes, Route } from '../node_modules/react-router-dom/dist/index';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
+import { UsersContainer } from './components/Users/UsersContainer';
 
 const App = (props) => {
   return (    
@@ -16,6 +16,7 @@ const App = (props) => {
         <Routes>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/dialogs/*" element={<DialogsContainer/>}></Route>
+          <Route path="/users" element={<UsersContainer/>}></Route>
         </Routes>
       </div>
     </div>

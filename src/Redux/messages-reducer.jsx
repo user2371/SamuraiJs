@@ -21,7 +21,6 @@ const initialState = {
 };
 
 const messagesReducer = (state = initialState, action) => {
-    debugger
     if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
         let stateCopy = {...state};
         stateCopy.newMessageText = action.text;

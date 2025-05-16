@@ -17,7 +17,6 @@ const profileReducer = (state = initialState, action) => {
     let stateCopy;
     switch (action.type) {
         case ADD_POST:
-
             stateCopy = { ...state };
             stateCopy.postData = [...state.postData];            
             stateCopy.idCounter += 1;
