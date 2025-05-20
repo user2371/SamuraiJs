@@ -3,7 +3,6 @@ import styles from './Post.module.css'
 
 const Post = (props) => {
     const likeClick = () => {
-        debugger
         props.onLikeClick(props.id);
     }
     return (
