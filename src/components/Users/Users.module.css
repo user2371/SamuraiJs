@@ -24,8 +24,20 @@
 }
 
 .followBtnContainer button {
+    min-width: 100px;
     display: block;
     margin: 0 auto;
+    
+}
+
+.redBtn {
+    background-color: rgb(228, 82, 82);
+    color: white;
+}
+
+.greenBtn {
+    background-color: rgb(8, 189, 8);
+    color: black;
 }
 
 .userDescription {
