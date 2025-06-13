@@ -4,21 +4,43 @@ import axios from '../../../node_modules/axios/index.js';
 import userIcon from "../../assets/images/userIcon.png";
 
 
-class UsersC extends React.Component {
+class Users extends React.Component {
     constructor(props) {
         super(props)
 
     }
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users")
+        /*axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then((response) => {
-                this.props.setUsers(response.data.items) // тут this.props
+                this.props.setUsers(response.data.items) 
+            })*/
+    }
+      onPageChanged = (page) => {          
+	    this.props.setCurrentPage(page);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+            .then((response) => {
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount)  
             })
     }
 
     render() {
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+        let pages = [];
+        for (let i=1; i <=pagesCount; i++) {
+	        pages.push(i);
+        }
         return (
             <div className={styles.users}>
+                <div>
+                    {pages.map(page => { 
+                        return <span  onClick={()=> {this.onPageChanged(page)}}
+                            className={this.props.currentPage === page 
+                                ? styles.selectedPage 
+                                : undefined	                
+	                }
+	                >{page}</span>})}
+                </div>
                 {this.props.users.map((user) => {
                     return (
                         <div className={styles.user} key={user.id}>
@@ -50,4 +72,4 @@ class UsersC extends React.Component {
     }
 }
 
-export default UsersC;
+export default Users;
