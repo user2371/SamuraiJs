@@ -46,20 +46,14 @@
     padding: 10px;
     justify-content: space-between;
 }
+.userStatus {
+    word-wrap: break-word;
+    max-width: 650px;
+}
 
 .location {
     padding: 10px;
     text-align: center;
 }
 
-span {
-    display: inline-block;
-    padding: 3px;
-    font-size: 14px;
-    line-height: 15px;
-}
-.selectedPage {
-    font-weight: bold;
-    background-color: black;
-    color: white;
-}
+
