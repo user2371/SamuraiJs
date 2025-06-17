@@ -1,6 +1,8 @@
 body {
   padding-top: 10px;
-  
+   background-image: url("../src/assets/images/nailJail.jpg");
+   background-attachment: fixed;
+   background-size: cover;
 }
 ul li {
   color: rgb(13, 14, 13);

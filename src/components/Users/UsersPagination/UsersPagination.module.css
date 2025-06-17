@@ -18,6 +18,7 @@ span {
     margin-bottom: 20px;
     cursor: pointer;
     user-select: none;
+    text-align: center;
 }
 .leftArrow,
 .rightArrow,

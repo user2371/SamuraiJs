@@ -13,21 +13,20 @@
 
 .user:hover {
     transform: scale(1.02);
-    background-color: grey;
+    background-color: #514b82;
+    color: white;
+;
 }
 
-.userLeftSide {
-}
+.userLeftSide {}
 
-.followBtnContainer {
-   
-}
+.followBtnContainer {}
 
 .followBtnContainer button {
     min-width: 100px;
     display: block;
     margin: 0 auto;
-    
+
 }
 
 .redBtn {
@@ -46,6 +45,7 @@
     padding: 10px;
     justify-content: space-between;
 }
+
 .userStatus {
     word-wrap: break-word;
     max-width: 650px;
@@ -57,3 +57,28 @@
 }
 
 
+.preloader {
+    margin: 0 auto;
+    width: 320px;
+    height: 22px;
+    border-radius: 20px;
+    color: #514b82;
+    border: 2px solid;
+    position: relative;
+}
+
+.preloader::before {
+    content: "";
+    position: absolute;
+    margin: 2px;
+    inset: 0 100% 0 0;
+    border-radius: inherit;
+    background: currentColor;
+    animation: l6 2s infinite;
+}
+
+@keyframes l6 {
+    100% {
+        inset: 0
+    }
+}

@@ -2,32 +2,32 @@ import React from 'react';
 import UsersPagination from './UsersPagination/UsersPagination';
 import styles from './Users.module.css'
 import userIcon from "../../assets/images/userIcon.png";
+import Preloader from '../common/Preloader/Preloader';
 
 let UsersPresentational = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     let createPages = (pages, pagesCount, currentPage) => {
-            if (pagesCount > 5) {
-                if (currentPage > 2) {
-                    for (let i = currentPage - 2; i <= currentPage + 2; i++) {
-                        pages.push(i)
-                        if (i == pagesCount) break
-                    }
-                }
-                else {
-                    for (let i = 1; i <= 5; i++) {
-                        pages.push(i)
-                        if (i == pagesCount) break
-                    }
-                }
-            } else {
-                for (let i = 1; i <= pagesCount; i++) {
+        if (pagesCount > 5) {
+            if (currentPage > 2) {
+                for (let i = currentPage - 2; i <= currentPage + 2; i++) {
                     pages.push(i)
+                    if (i == pagesCount) break
                 }
             }
+            else {
+                for (let i = 1; i <= 5; i++) {
+                    pages.push(i)
+                    if (i == pagesCount) break
+                }
+            }
+        } else {
+            for (let i = 1; i <= pagesCount; i++) {
+                pages.push(i)
+            }
         }
+    }
     createPages(pages, pagesCount, props.currentPage);
-
     return (
         <div className={styles.users}>
             <UsersPagination
@@ -42,7 +42,9 @@ let UsersPresentational = (props) => {
                 pagesCount={pagesCount}
             >
             </UsersPagination>
-            {props.users.map((user) => {
+            {props.isFetching
+                ? <Preloader/>
+                : props.users.map((user) => {
                 return (
                     <div className={styles.user} key={user.id}>
                         <div className={styles.userLeftSide}>
@@ -68,8 +70,11 @@ let UsersPresentational = (props) => {
                     </div>
                 )
             })}
+        
+
+            
         </div >
     )
 }
-    
+
 export default UsersPresentational;

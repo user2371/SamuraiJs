@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from '../../../node_modules/react-redux/dist/react-redux';
-import { followAC, setCurrentPageAC, setTotalUsersCount, setUsersAC, unFollowAC } from '../../redux/users-reducer';
+import { followAC, setCurrentPageAC, setTotalUsersCount, setUsersAC, toggleIsFetchingAC, unFollowAC } from '../../redux/users-reducer';
 import UsersPresentational from './UsersPresentational';
 import axios from 'axios';
 
@@ -10,36 +10,44 @@ class Users extends React.Component {
 
     }
     componentDidMount() {
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then((response) => {
+                this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
                 this.props.setTotalUsersCount(response.data.totalCount)
             })
     }
     onPageChanged = (page) => {
         this.props.setCurrentPage(page);
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.toggleIsFetching(false)
             })
     }
     onFirstPageDoubleArrowClick = () => {
         this.props.setCurrentPage(1);
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${1}&count=${this.props.pageSize}`)
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.toggleIsFetching(false)
             })
     }
 
     onLastPageDoubleArrowClick = () => {
         let lastPage = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         this.props.setCurrentPage(lastPage);
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${lastPage}&count=${this.props.pageSize}`)
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.toggleIsFetching(false)
             })
     }
     onNumberInputChange = (page) => {
@@ -49,11 +57,12 @@ class Users extends React.Component {
         if (page < 1 || page === null || page > Math.ceil(this.props.totalUsersCount / this.props.pageSize)) {
             return
         } else {
-
+            this.props.toggleIsFetching(true)
             axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
                 .then((response) => {
                     this.props.setUsers(response.data.items);
                     this.props.setCurrentPage(page);
+                    this.props.toggleIsFetching(false)
                 })
         }
     }
@@ -64,10 +73,12 @@ class Users extends React.Component {
             return
         }
         this.props.setCurrentPage(previousPage);
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${previousPage}&count=${this.props.pageSize}`)
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.toggleIsFetching(false)
             })
     }
     onRightArrowClick = () => {
@@ -76,10 +87,12 @@ class Users extends React.Component {
             return
         }
         this.props.setCurrentPage(previousPage);
+        this.props.toggleIsFetching(true)
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${previousPage}&count=${this.props.pageSize}`)
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.toggleIsFetching(false)
             })
     }
     
@@ -99,6 +112,7 @@ class Users extends React.Component {
             pageSize={this.props.pageSize}
             follow={this.props.follow}
             unFollow={this.props.unFollow}
+            isFetching={this.props.isFetching}
 
         />
     }
@@ -110,6 +124,7 @@ let mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
+        isFetching: state.usersPage.isFetching,
     }
 }
 
@@ -120,6 +135,7 @@ let mapDispatchToProps = (dispatch) => {
         setUsers: (users) => dispatch(setUsersAC(users)),
         setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
         setTotalUsersCount: (totalCount) => dispatch(setTotalUsersCount(totalCount)),
+        toggleIsFetching: (isFetching) => dispatch(toggleIsFetchingAC(isFetching))
     })
 }
 
