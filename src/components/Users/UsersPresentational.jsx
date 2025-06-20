@@ -3,6 +3,7 @@ import UsersPagination from './UsersPagination/UsersPagination';
 import styles from './Users.module.css'
 import userIcon from "../../assets/images/userIcon.png";
 import Preloader from '../common/Preloader/Preloader';
+import { NavLink } from 'react-router-dom';
 
 let UsersPresentational = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -43,36 +44,36 @@ let UsersPresentational = (props) => {
             >
             </UsersPagination>
             {props.isFetching
-                ? <Preloader/>
+                ? <Preloader />
                 : props.users.map((user) => {
-                return (
-                    <div className={styles.user} key={user.id}>
-                        <div className={styles.userLeftSide}>
-                            <div className={styles.userAvatar}><img src={user.photos.small !== null ? user.photos.small : userIcon} /></div>
-                            <div className={styles.followBtnContainer}>
-                                {user.isFollowed
-                                    ? <button className={styles.redBtn} onClick={() => { props.unFollow(user.id) }}>Unfollow</button>
-                                    : <button className={styles.greenBtn} onClick={() => { props.follow(user.id) }}>follow</button>
-                                }
+                    return (
+                        <div className={styles.user} key={user.id}>
+                            <div className={styles.userLeftSide}>
+                                <NavLink to ={"/profile/" + user.id}><div className={styles.userAvatar}><img src={user.photos.small !== null ? user.photos.small : userIcon} /></div></NavLink>
+                                <div className={styles.followBtnContainer}>
+                                    {user.isFollowed
+                                        ? <button className={styles.redBtn} onClick={() => { props.unFollow(user.id) }}>Unfollow</button>
+                                        : <button className={styles.greenBtn} onClick={() => { props.follow(user.id) }}>follow</button>
+                                    }
+                                </div>
+                            </div>
+
+                            <div className={styles.userDescription}>
+                                <div>
+                                    <h3>{user.name}</h3>
+                                    <p className={styles.userStatus}>{user.status}</p>
+                                </div>
+                                <div className={styles.location}>
+                                    <p>{"user.location.country"}</p>
+                                    <p>{"user.location.city"}</p>
+                                </div>
                             </div>
                         </div>
+                    )
+                })}
 
-                        <div className={styles.userDescription}>
-                            <div>
-                                <h3>{user.name}</h3>
-                                <p className={styles.userStatus}>{user.status}</p>
-                            </div>
-                            <div className={styles.location}>
-                                <p>{"user.location.country"}</p>
-                                <p>{"user.location.city"}</p>
-                            </div>
-                        </div>
-                    </div>
-                )
-            })}
-        
 
-            
+
         </div >
     )
 }

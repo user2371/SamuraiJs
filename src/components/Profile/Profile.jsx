@@ -8,7 +8,7 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 const Profile = (props) => {
   return (    
     <div>
-      <AvaSection />
+      <AvaSection userProfile={props.userProfile}/>
       <MyPostsContainer/>
     </div>
   )
