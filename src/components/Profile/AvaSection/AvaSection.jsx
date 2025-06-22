@@ -4,15 +4,16 @@ import Preloader from "../../common/Preloader/Preloader";
 
 const AvaSection = (props) => {
 
-  if (!props.userProfile) {
+  if (!props.userProfile) {    
     return <Preloader></Preloader>
   } else {
+    debugger
     return (
       <div>
         <div className={styles.contentTopImg}></div>
         <div>
           <img src={props.userProfile.photos.large}></img>  
-          Ava + description
+          <div>Ava + description </div>
         </div>
       </div>
     )
