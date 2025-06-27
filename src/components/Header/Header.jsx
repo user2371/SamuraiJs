@@ -1,12 +1,20 @@
 import React from 'react'
-import Styles from "./Header.module.css"
+import styles from "./Header.module.css"
 import NailJail from "../../assets/images/NailJailLogo1.png"
+import { NavLink } from 'react-router-dom'
 
 
 const Header = (props) => {
+    debugger
     return (
-        <header className={Styles.header}>
-        <img src={NailJail}></img>
+        <header className={styles.header}>
+            <img src={NailJail}></img>
+            <div className={styles.loginBlock}>
+                {(props.isAuth) ?
+                    props.login :
+                    <NavLink to="/login" className={styles.loginLink}>Login</NavLink>
+                }
+            </div>
         </header>
     )
 }
