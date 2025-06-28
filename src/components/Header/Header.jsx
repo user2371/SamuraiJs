@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 
 
 const Header = (props) => {
-    debugger
     return (
         <header className={styles.header}>
             <img src={NailJail}></img>

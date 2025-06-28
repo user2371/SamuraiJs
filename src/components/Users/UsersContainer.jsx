@@ -11,7 +11,9 @@ class Users extends React.Component {
     }
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
             .then((response) => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.data.items)
@@ -21,7 +23,9 @@ class Users extends React.Component {
     onPageChanged = (page) => {
         this.props.setCurrentPage(page);
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount)
@@ -31,7 +35,9 @@ class Users extends React.Component {
     onFirstPageDoubleArrowClick = () => {
         this.props.setCurrentPage(1);
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${1}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${1}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
@@ -43,7 +49,9 @@ class Users extends React.Component {
         let lastPage = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         this.props.setCurrentPage(lastPage);
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${lastPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${lastPage}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
@@ -58,7 +66,9 @@ class Users extends React.Component {
             return
         } else {
             this.props.toggleIsFetching(true)
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
                 .then((response) => {
                     this.props.setUsers(response.data.items);
                     this.props.setCurrentPage(page);
@@ -74,7 +84,9 @@ class Users extends React.Component {
         }
         this.props.setCurrentPage(previousPage);
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${previousPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${previousPage}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
@@ -88,7 +100,9 @@ class Users extends React.Component {
         }
         this.props.setCurrentPage(previousPage);
         this.props.toggleIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${previousPage}&count=${this.props.pageSize}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${previousPage}&count=${this.props.pageSize}`, {
+            withCredentials: true,
+        })
             .then((response) => {
                 this.props.setUsers(response.data.items);
                 this.props.setTotalUsersCount(response.data.totalCount);
