@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from '../../../node_modules/react-redux/dist/react-redux';
-import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unFollow } from '../../redux/users-reducer';
+import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingProgress, toggleIsFetching, unFollow } from '../../redux/users-reducer';
 import UsersPresentational from './UsersPresentational';
 import { usersAPI } from '../../api/api';
 
@@ -11,7 +11,7 @@ class Users extends React.Component {
     }
     componentDidMount() {
         this.props.toggleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)                      //                       <---------------- here
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)                      
             .then((response) => {
                 this.props.toggleIsFetching(false)
                 this.props.setUsers(response.items)                                        
@@ -21,7 +21,7 @@ class Users extends React.Component {
     onPageChanged = (page) => {
         this.props.setCurrentPage(page);
         this.props.toggleIsFetching(true)
-        usersAPI.getUsers(page, this.props.pageSize)                      //                       <---------------- here
+        usersAPI.getUsers(page, this.props.pageSize)                      
             .then((response) => {
                 this.props.setUsers(response.items);                                       
                 this.props.setTotalUsersCount(response.totalCount)                         
@@ -34,7 +34,7 @@ class Users extends React.Component {
         }
         this.props.setCurrentPage(1);
         this.props.toggleIsFetching(true)
-        usersAPI.getUsers(1, this.props.pageSize)                      //                       <---------------- here
+        usersAPI.getUsers(1, this.props.pageSize)                      
             .then((response) => {
                 this.props.setUsers(response.items);                                        
                 this.props.setTotalUsersCount(response.totalCount);                         
@@ -49,7 +49,7 @@ class Users extends React.Component {
         let lastPage = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         this.props.setCurrentPage(lastPage);        
         this.props.toggleIsFetching(true)
-        usersAPI.getUsers(lastPage, this.props.PageSize)                      //                       <---------------- here
+        usersAPI.getUsers(lastPage, this.props.PageSize)                      
             .then((response) => {
                 this.props.setUsers(response.items);                                        
                 this.props.setTotalUsersCount(response.totalCount);                         
@@ -64,7 +64,7 @@ class Users extends React.Component {
             return
         } else {
             this.props.toggleIsFetching(true)
-            usersAPI.getUsers(page, this.props.pageSize)                      //                       <---------------- here
+            usersAPI.getUsers(page, this.props.pageSize)                      
                 .then((response) => {
                     this.props.setUsers(response.items);                                       
                     this.props.setCurrentPage(page);
@@ -80,7 +80,7 @@ class Users extends React.Component {
         }
         this.props.setCurrentPage(previousPage);
         this.props.toggleIsFetching(true)
-        usersAPI.getUsers(previousPage, this.props.pageSize)                      //                       <---------------- here
+        usersAPI.getUsers(previousPage, this.props.pageSize)                      
             .then((response) => {
                 this.props.setUsers(response.items);                                              
                 this.props.setTotalUsersCount(response.totalCount);                               
@@ -94,7 +94,7 @@ class Users extends React.Component {
         }
         this.props.setCurrentPage(nextPage);
         this.props.toggleIsFetching(true)
-        usersAPI.getUsers(nextPage, this.props.pageSize)                      //                       <---------------- here
+        usersAPI.getUsers(nextPage, this.props.pageSize)                      
             .then((response) => {
                 this.props.setUsers(response.items);                                                
                 this.props.setTotalUsersCount(response.totalCount);                                 
@@ -119,7 +119,8 @@ class Users extends React.Component {
             follow={this.props.follow}
             unFollow={this.props.unFollow}
             isFetching={this.props.isFetching}
-
+            followingInProgress={this.props.followingInProgress}
+            toggleFollowingProgress={this.props.toggleFollowingProgress}
         />
     }
 }
@@ -131,6 +132,7 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress,
     }
 }
 
@@ -152,6 +154,7 @@ export let UsersContainer = connect(mapStateToProps,
         setUsers,
         setCurrentPage,
         setTotalUsersCount,
-        toggleIsFetching
+        toggleIsFetching,
+        toggleFollowingProgress
     })(Users);
 

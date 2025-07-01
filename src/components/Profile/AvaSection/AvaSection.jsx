@@ -10,9 +10,9 @@ const AvaSection = (props) => {
     return (
       <div>
         <div className={styles.contentTopImg}></div>
-        <div>
+        <div className={styles.userImageBlock}>
           <img src={props.userProfile.photos.large}></img>  
-          <div>Ava + description </div>
+          <div className={styles.userDescription}>{props.userProfile.fullName} </div>
         </div>
       </div>
     )

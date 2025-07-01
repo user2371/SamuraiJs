@@ -28,7 +28,10 @@
     margin: 0 auto;
 
 }
-
+button:disabled {
+    color: red;
+    opacity: 0.3;
+}
 .redBtn {
     background-color: rgb(228, 82, 82);
     color: white;
@@ -82,3 +85,4 @@
         inset: 0
     }
 }
+

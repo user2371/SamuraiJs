@@ -52,8 +52,9 @@ let UsersPresentational = (props) => {
                             <div className={styles.userLeftSide}>
                                 <NavLink to={"/profile/" + user.id}><div className={styles.userAvatar}><img src={user.photos.small !== null ? user.photos.small : userIcon} /></div></NavLink>
                                 <div className={styles.followBtnContainer}>
-                                    {user.followed 
-                                        ? <button className={styles.redBtn} onClick={() => {
+                                    {user.followed
+                                        ? <button disabled={props.followingInProgress.some(id => id == user.id)} className={styles.redBtn} onClick={() => {
+                                            props.toggleFollowingProgress(true, user.id);
                                             axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {
                                                 withCredentials: true,
                                                 headers: {
@@ -63,12 +64,15 @@ let UsersPresentational = (props) => {
                                                 .then(response => {
                                                     if (response.data.resultCode == 0) {
                                                         props.unFollow(user.id)
+
                                                     }
+                                                    props.toggleFollowingProgress(false, user.id);
                                                 })
 
 
                                         }}>Unfollow</button>
-                                        : <button className={styles.greenBtn} onClick={() => {
+                                        : <button disabled={props.followingInProgress.some(id => id == user.id)} className={styles.greenBtn} onClick={() => {
+                                            props.toggleFollowingProgress(true, user.id);
                                             axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${user.id}`, {}, {
                                                 withCredentials: true,
                                                 headers: {
@@ -79,8 +83,9 @@ let UsersPresentational = (props) => {
                                                     if (response.data.resultCode == 0) {
                                                         props.follow(user.id)
                                                     }
+                                                    props.toggleFollowingProgress(false, user.id);
                                                 })
-                                            
+
                                         }}>follow</button>
                                     }
                                 </div>
