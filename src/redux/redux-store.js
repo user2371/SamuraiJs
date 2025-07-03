@@ -15,3 +15,5 @@ let reducers = combineReducers({
 const store = legacy_createStore(reducers);
 
 export default store
+
+// lesson 65 тут була тільки теорія 
