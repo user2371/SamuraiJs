@@ -32,10 +32,6 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = 2;
         }
-        // usersAPI.getProfile(userId)
-        //     .then(response => {
-        //         this.props.setUserProfile(response.data);
-        //     })
         this.props.getUserProfileThunkCreator(userId)
         
     }
@@ -45,7 +41,10 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    return { userProfile: state.profilePage.userProfile }
+    return { 
+        userProfile: state.profilePage.userProfile,
+        isAuth: state.authReducer.isAuth,
+     }
 }
 
 let witUrlDataContainerComponent = withRouter(ProfileContainer)

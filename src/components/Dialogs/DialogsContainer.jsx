@@ -7,11 +7,11 @@ import { connect } from "../../../node_modules/react-redux/dist/react-redux";
 
 
 let mapStateToProps = (state) => {
-    return {
-
+    return {        
         dialogsData: state.messagesPage.dialogsData,
         messagesData: state.messagesPage.messagesData,
         newMessageText: state.messagesPage.newMessageText,
+        isAuth: state.authReducer.isAuth,
     }
 }
 

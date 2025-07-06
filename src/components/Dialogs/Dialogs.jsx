@@ -2,6 +2,7 @@ import React, { Children } from "react";
 import styles from "./Dialogs.module.css"
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessage from "./DialogMessage/DialogMessage";
+import { Navigate } from "react-router-dom";
 
 
 const Dialogs = (props) => {    
@@ -11,12 +12,16 @@ const Dialogs = (props) => {
     let updateMessage = (evt) => {
         let text = evt.target.value;
         props.onNewMessageChange(text)
-    }
-   
+    }   
 
     let sendMessageClick = () => {
         props.onSendMessageClick()
     }
+
+    if (!props.isAuth) { 
+        return <Navigate to="/profile/"/>
+    }
+
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogItems}>
