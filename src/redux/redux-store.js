@@ -1,8 +1,9 @@
-import { combineReducers, legacy_createStore } from "redux";
+import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
 import profileReducer from "./profile-reducer";
 import messagesReducer from "./messages-reducer";
 import usersReducer from "./users-reducer";
 import authReducer from "./auth-reducer";
+import {thunk as thunkMiddleware} from "redux-thunk"
 
 
 let reducers = combineReducers({
@@ -12,8 +13,7 @@ let reducers = combineReducers({
     authReducer: authReducer,
 });
 
-const store = legacy_createStore(reducers);
+const store = legacy_createStore(reducers, applyMiddleware(thunkMiddleware));
 
 export default store
 
-// lesson 65 тут була тільки теорія 

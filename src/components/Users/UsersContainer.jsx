@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from '../../../node_modules/react-redux/dist/react-redux';
-import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleFollowingProgress, toggleIsFetching, unFollow } from '../../redux/users-reducer';
+import { followThunkCreator, getUsers, toggleFollowingProgress, unFollowThunkCreator } from '../../redux/users-reducer';
 import UsersPresentational from './UsersPresentational';
-import { usersAPI } from '../../api/api';
 
 class Users extends React.Component {
     constructor(props) {
@@ -10,36 +9,18 @@ class Users extends React.Component {
 
     }
     componentDidMount() {
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)                      
-            .then((response) => {
-                this.props.toggleIsFetching(false)
-                this.props.setUsers(response.items)                                        
-                this.props.setTotalUsersCount(response.totalCount)                         
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
+
     onPageChanged = (page) => {
-        this.props.setCurrentPage(page);
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(page, this.props.pageSize)                      
-            .then((response) => {
-                this.props.setUsers(response.items);                                       
-                this.props.setTotalUsersCount(response.totalCount)                         
-                this.props.toggleIsFetching(false)
-            })
+        this.props.getUsers(page, this.props.pageSize)
     }
+
     onFirstPageDoubleArrowClick = () => {
         if (this.props.currentPage <= 1) {
             return
         }
-        this.props.setCurrentPage(1);
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(1, this.props.pageSize)                      
-            .then((response) => {
-                this.props.setUsers(response.items);                                        
-                this.props.setTotalUsersCount(response.totalCount);                         
-                this.props.toggleIsFetching(false)
-            })
+        this.props.getUsers(1, this.props.pageSize)
     }
 
     onLastPageDoubleArrowClick = () => {
@@ -47,15 +28,9 @@ class Users extends React.Component {
             return
         }
         let lastPage = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-        this.props.setCurrentPage(lastPage);        
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(lastPage, this.props.PageSize)                      
-            .then((response) => {
-                this.props.setUsers(response.items);                                        
-                this.props.setTotalUsersCount(response.totalCount);                         
-                this.props.toggleIsFetching(false)
-            })
+        this.props.getUsers(lastPage, this.props.PageSize)
     }
+
     onNumberInputChange = (page) => {
         if (typeof (page) !== "number") {
             page = +page
@@ -63,13 +38,7 @@ class Users extends React.Component {
         if (page < 1 || page === null || page > Math.ceil(this.props.totalUsersCount / this.props.pageSize)) {
             return
         } else {
-            this.props.toggleIsFetching(true)
-            usersAPI.getUsers(page, this.props.pageSize)                      
-                .then((response) => {
-                    this.props.setUsers(response.items);                                       
-                    this.props.setCurrentPage(page);
-                    this.props.toggleIsFetching(false)
-                })
+            this.props.getUsers(page, this.props.pageSize)
         }
     }
 
@@ -78,31 +47,16 @@ class Users extends React.Component {
         if (previousPage < 1) {
             return
         }
-        this.props.setCurrentPage(previousPage);
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(previousPage, this.props.pageSize)                      
-            .then((response) => {
-                this.props.setUsers(response.items);                                              
-                this.props.setTotalUsersCount(response.totalCount);                               
-                this.props.toggleIsFetching(false)
-            })
+        this.props.getUsers(previousPage, this.props.pageSize)
     }
+
     onRightArrowClick = () => {
         let nextPage = this.props.currentPage + 1
         if (nextPage > Math.ceil(this.props.totalUsersCount / this.props.pageSize)) {
             return
         }
-        this.props.setCurrentPage(nextPage);
-        this.props.toggleIsFetching(true)
-        usersAPI.getUsers(nextPage, this.props.pageSize)                      
-            .then((response) => {
-                this.props.setUsers(response.items);                                                
-                this.props.setTotalUsersCount(response.totalCount);                                 
-                this.props.toggleIsFetching(false)
-            })
+        this.props.getUsers(nextPage, this.props.pageSize)
     }
-
-
 
     render() {
         return <UsersPresentational
@@ -116,8 +70,8 @@ class Users extends React.Component {
             users={this.props.users}
             totalUsersCount={this.props.totalUsersCount}
             pageSize={this.props.pageSize}
-            follow={this.props.follow}
-            unFollow={this.props.unFollow}
+            followThunkCreator={this.props.followThunkCreator}
+            unFollowThunkCreator={this.props.unFollowThunkCreator}
             isFetching={this.props.isFetching}
             followingInProgress={this.props.followingInProgress}
             toggleFollowingProgress={this.props.toggleFollowingProgress}
@@ -149,12 +103,9 @@ let mapStateToProps = (state) => {
 
 export let UsersContainer = connect(mapStateToProps,
     {
-        follow,
-        unFollow,
-        setUsers,
-        setCurrentPage,
-        setTotalUsersCount,
-        toggleIsFetching,
-        toggleFollowingProgress
+        followThunkCreator,
+        unFollowThunkCreator,
+        toggleFollowingProgress,
+        getUsers
     })(Users);
 
