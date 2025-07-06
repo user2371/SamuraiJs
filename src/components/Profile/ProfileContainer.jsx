@@ -1,8 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../redux/profile-reducer';
+import { getUserProfileThunkCreator } from '../../redux/profile-reducer';
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -28,27 +27,29 @@ class ProfileContainer extends React.Component {
         super(props)
     }
     componentDidMount() {
-        
+
         let userId = this.props.router.params.userId;
         if (!userId) {
             userId = 2;
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-		.then(response => {
-		this.props.setUserProfile(response.data);
-		});
+        // usersAPI.getProfile(userId)
+        //     .then(response => {
+        //         this.props.setUserProfile(response.data);
+        //     })
+        this.props.getUserProfileThunkCreator(userId)
+        
     }
-    render () {
+    render() {
         return <Profile {...this.props} ></Profile>
     }
 }
 
 let mapStateToProps = (state) => {
-    return {userProfile: state.profilePage.userProfile} 
+    return { userProfile: state.profilePage.userProfile }
 }
 
 let witUrlDataContainerComponent = withRouter(ProfileContainer)
-export default connect(mapStateToProps,{setUserProfile})(witUrlDataContainerComponent);
+export default connect(mapStateToProps, { getUserProfileThunkCreator })(witUrlDataContainerComponent);
 
 
 

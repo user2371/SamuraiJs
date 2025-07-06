@@ -1,3 +1,4 @@
+import { usersAPI } from "../api/api";
 
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
@@ -20,7 +21,7 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             stateCopy = { ...state };
-            stateCopy.postData = [...state.postData];            
+            stateCopy.postData = [...state.postData];
             stateCopy.idCounter += 1;
             let newPost = {
                 id: stateCopy.idCounter,
@@ -39,14 +40,14 @@ const profileReducer = (state = initialState, action) => {
             stateCopy.newPostText = action.text;
             return stateCopy;
         case UPDATE_LIKES_COUNT:
-            stateCopy = {...state};
+            stateCopy = { ...state };
             stateCopy.postData = [...state.postData];
-            stateCopy.postData[action.id] = {...state.postData[action.id]};
+            stateCopy.postData[action.id] = { ...state.postData[action.id] };
             stateCopy.postData[action.id].likesCount = stateCopy.postData[action.id].likesCount + 1;
             //state.postData[action.id].likesCount += 1;
             return stateCopy
         case SET_USER_PROFILE:
-            return {...state, userProfile: action.userProfile}    
+            return { ...state, userProfile: action.userProfile }
         default:
             return state;
     }
@@ -67,7 +68,16 @@ export const likesUpdateCreator = (id) => {
 };
 
 export const setUserProfile = (userProfile) => {
-    return {type: SET_USER_PROFILE, userProfile: userProfile}
+    return { type: SET_USER_PROFILE, userProfile: userProfile }
+}
+
+export const getUserProfileThunkCreator = (userId) => {
+    return (dispatch) => {
+        usersAPI.getProfile(userId)
+            .then(response => {
+                dispatch(setUserProfile(response.data));
+            })
+    }
 }
 
 export default profileReducer;
