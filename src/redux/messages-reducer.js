@@ -17,7 +17,7 @@ const initialState = {
         { id: 3, message: "I am fine thanks", },
         { id: 4, message: "Good bye", },
     ],
-    newMessageText: "ff"
+    newMessageText: "Type your message here"
 };
 
 const messagesReducer = (state = initialState, action) => {

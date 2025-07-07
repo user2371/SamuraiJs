@@ -5,7 +5,7 @@ import userIcon from "../../assets/images/userIcon.png";
 import Preloader from '../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 
-let UsersPresentational = (props) => {
+let Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     let createPages = (pages, pagesCount, currentPage) => {
@@ -82,4 +82,4 @@ let UsersPresentational = (props) => {
     )
 }
 
-export default UsersPresentational;
+export default Users;

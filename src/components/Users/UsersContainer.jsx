@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from '../../../node_modules/react-redux/dist/react-redux';
 import { followThunkCreator, getUsers, toggleFollowingProgress, unFollowThunkCreator } from '../../redux/users-reducer';
-import UsersPresentational from './UsersPresentational';
+import { compose } from 'redux';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
+import Users from './UsersPresentational';
 
-class Users extends React.Component {
+class UsersContainer extends React.Component {
     constructor(props) {
         super(props)
 
@@ -59,7 +61,7 @@ class Users extends React.Component {
     }
 
     render() {
-        return <UsersPresentational
+        return <Users
             onFirstPageDoubleArrowClick={this.onFirstPageDoubleArrowClick}
             onLeftArrowClick={this.onLeftArrowClick}
             onPageChanged={this.onPageChanged}
@@ -101,11 +103,13 @@ let mapStateToProps = (state) => {
     })
 }*/
 
-export let UsersContainer = connect(mapStateToProps,
+export default compose(
+    withAuthRedirect,
+    connect(mapStateToProps,
     {
         followThunkCreator,
         unFollowThunkCreator,
         toggleFollowingProgress,
         getUsers
-    })(Users);
-
+    })
+)(UsersContainer)
