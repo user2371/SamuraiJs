@@ -18,10 +18,6 @@ const Dialogs = (props) => {
         props.onSendMessageClick()
     }
 
-    if (!props.isAuth) { 
-        return <Navigate to="/profile/"/>
-    }
-
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogItems}>
