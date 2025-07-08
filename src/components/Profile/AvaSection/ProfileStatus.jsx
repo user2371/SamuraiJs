@@ -5,7 +5,8 @@ class ProfileStatus extends React.Component {
     state = {
         editMode: false,
     }
-    avtivateEditMode = () => {    
+    avtivateEditMode = () => {          
+        // В уроці вирішується проблема яка на цей час вже не актуальна її пофіксили
     this.setState({
         editMode: true,
     })
