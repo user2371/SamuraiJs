@@ -12,7 +12,7 @@ class HeaderContainer extends React.Component {
     }
     
     componentDidMount() {
-        getAuthUserDataThunkCreator();
+        this.props.getAuthUserDataThunkCreator();
     }
 
     render() {
@@ -29,6 +29,6 @@ return {
 }
 
 
-export default connect(mapStateToProps, getAuthUserDataThunkCreator/*{setAuthUserData}*/)(HeaderContainer);
+export default connect(mapStateToProps, {getAuthUserDataThunkCreator}/*{setAuthUserData}*/)(HeaderContainer);
 
  

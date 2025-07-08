@@ -12,7 +12,7 @@ const initialState = {
         { id: 2, message: "Good bye", likesCount: 5, dislikesCount: 0, },
     ],
     idCounter: 2,
-    newPostText: "",
+    newPostText: "Type your message here",
     userProfile: null,
 };
 

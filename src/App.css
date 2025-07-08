@@ -3,6 +3,7 @@ body {
    background-image: url("../src/assets/images/nailJail.jpg");
    background-attachment: fixed;
    background-size: cover;
+   overflow-y: scroll;
 }
 ul li {
   color: rgb(13, 14, 13);
