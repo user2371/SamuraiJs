@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getUserProfileThunkCreator } from '../../redux/profile-reducer';
+import { getUserProfileThunkCreator, getUserStatusThunkCreator, updateUserStatusThunkCreator } from '../../redux/profile-reducer';
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -32,8 +32,10 @@ class ProfileContainer extends React.Component {
 
         let userId = this.props.router.params.userId;
         if (!userId) {
-            userId = 2;
+            userId = 32414;
         }
+
+        this.props.getUserStatusThunkCreator(userId)        
         this.props.getUserProfileThunkCreator(userId)
         
     }
@@ -45,12 +47,13 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return { 
         userProfile: state.profilePage.userProfile,
+        userStatus: state.profilePage.userStatus,
      }
 }
 
 
 export default compose(
-    connect(mapStateToProps, { getUserProfileThunkCreator }),
+    connect(mapStateToProps, { getUserProfileThunkCreator, getUserStatusThunkCreator, updateUserStatusThunkCreator }),
     withRouter,
     withAuthRedirect
 )(ProfileContainer)

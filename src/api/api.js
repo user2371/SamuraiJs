@@ -26,14 +26,29 @@ export const usersAPI = {
     },
 
     getProfile(userId) {
-        return axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+        return profileAPI.getProfile(userId)
     }
 
 }
 
 export const authAPI = {
     me() {
-        return axios.get("https://social-network.samuraijs.com/api/1.0/auth/me", { withCredentials: true })
+        return instance.get("auth/me")
+    }
+}
+
+
+export const profileAPI = {
+    getProfile(userId) {
+        return instance.get(`profile/` + userId)
+    },
+
+    getProfileStatus(userId) {
+        return instance.get(`profile/status/` + userId)
+    },
+
+     updateUserStatus(status) {
+        return instance.put(`profile/status/`, {status: status})
     }
 }
 

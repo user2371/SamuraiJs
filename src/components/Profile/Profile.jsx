@@ -6,12 +6,11 @@ import { Navigate } from 'react-router-dom';
 
 
 const Profile = (props) => {
-  // if (!props.isAuth) {
-  //   return <Navigate to="/login/"/>
-  // }
+  
+   
   return (    
     <div>
-      <AvaSection userProfile={props.userProfile}/>
+      <AvaSection userProfile={props.userProfile} userStatus={props.userStatus} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator}/>
       <MyPostsContainer/>
     </div>
   )
