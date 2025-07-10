@@ -8,7 +8,6 @@ const AvaSection = (props) => {
   if (!props.userProfile) {    
     return <Preloader></Preloader>
   } else {
-     debugger
     return (
       <div>
         <div className={styles.contentTopImg}></div>

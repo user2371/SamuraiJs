@@ -2,10 +2,12 @@ import React from 'react';
 import styles from './AvaSection.module.css'
 
 class UserStatusComponent extends React.Component {
+    
     state = {
         editMode: false,
         userStatus: this.props.userStatus
     }
+    
     avtivateEditMode = () => {
         this.setState({
             editMode: true,
@@ -21,6 +23,11 @@ class UserStatusComponent extends React.Component {
         this.setState({
             userStatus: evt.currentTarget.value,
         })
+    }
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.userStatus !== this.props.userStatus) {
+            this.setState({ userStatus: this.props.userStatus })
+        }                
     }
 
     render() {

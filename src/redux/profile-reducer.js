@@ -15,7 +15,7 @@ const initialState = {
     idCounter: 2,
     newPostText: "Type your message here",
     userProfile: null,
-    userStatus: "test"
+    userStatus: "initialStatus"
 };
 
 const profileReducer = (state = initialState, action) => {
