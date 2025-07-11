@@ -10,7 +10,8 @@ textarea {
     box-sizing: border-box;
     box-shadow: inset 0px 0px 10px 4px white;
 }
-button {
+.myPostBtn
+ {
     display: block;
     margin-top: 10px;
     margin-left: auto;

@@ -20,7 +20,7 @@ let chagePost = () => {
       <h3>My posts</h3>
       <div>
         <textarea ref={newPostElement}  onChange={chagePost} value={props.newPostText}></textarea>        
-        <button onClick={addPost}>Add post</button>
+        <button className={styles.myPostBtn} onClick={addPost}>Add post</button>
       </div>
       <div>
          {postsComponents}    
