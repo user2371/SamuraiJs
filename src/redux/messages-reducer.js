@@ -1,5 +1,5 @@
 
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
+// const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
 const SEND_MESSAGE = "SEND-MESSAGE"
 
 const initialState = {
@@ -17,39 +17,38 @@ const initialState = {
         { id: 3, message: "I am fine thanks", },
         { id: 4, message: "Good bye", },
     ],
-    newMessageText: "Type your message here"
+    // newMessageText: "Type your message here"
 };
 
 const messagesReducer = (state = initialState, action) => {
-    if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        let stateCopy = {...state};
-        stateCopy.newMessageText = action.text;
-        return stateCopy;
-        //state.newMessageText = action.text;
-    } else if (action.type === SEND_MESSAGE) {
-        let stateCopy = {...state};
+    // if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+    //     let stateCopy = {...state};
+    //     stateCopy.newMessageText = action.text;
+    //     return stateCopy;
+    // } else 
+    if (action.type === SEND_MESSAGE) {
+        let stateCopy = { ...state };
         stateCopy.messagesData = [...state.messagesData]
-        //let newMessageText = state.newMessageText
         let newMessage = {
             id: 6,
-            message: stateCopy.newMessageText,
+            message: action.DialogsMessageText,
         }
         stateCopy.messagesData.push(newMessage);
-        stateCopy.newMessageText = "";
+        // stateCopy.newMessageText = "";
         return stateCopy;
     }
     return state;
 }
 
-export let updateNewMessageTextCreator = (text) => {
-    return (
-        {
-            type: UPDATE_NEW_MESSAGE_TEXT,
-            text: text,
-        }
-    )
-}
+// export let updateNewMessageTextCreator = (text) => {
+//     return (
+//         {
+//             type: UPDATE_NEW_MESSAGE_TEXT,
+//             text: text,
+//         }
+//     )
+// }
 
-export let sendMessageCreator = () => { return { type: SEND_MESSAGE } };
+export let sendMessageCreator = (DialogsMessageText) => { return { type: SEND_MESSAGE, DialogsMessageText: DialogsMessageText } };
 
 export default messagesReducer;
