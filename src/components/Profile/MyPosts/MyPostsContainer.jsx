@@ -12,7 +12,6 @@ import { connect } from '../../../../node_modules/react-redux/dist/react-redux';
 const mapStateToProps = (state) => {
   return {
     postData: state.profilePage.postData,
-    // newPostText: state.profilePage.newPostText,
     idCounter: state.profilePage.idCounter
   }
 };

@@ -1,0 +1,15 @@
+
+.formControl span {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.formControl span.error {
+color: red;
+
+}
+
+.formControl textarea.error,
+.formControl input.error  {
+box-shadow: inset 0px 0px 10px 4px red;
+}

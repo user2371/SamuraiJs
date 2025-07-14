@@ -1,0 +1,5 @@
+.loginCheckbox div,
+.loginField div,
+.passwordField div {
+    display: inline-block;
+}
