@@ -2,7 +2,7 @@ import React from 'react'
 import Header from './Header'
 import axios from 'axios'
 import { connect } from 'react-redux'
-import { getAuthUserDataThunkCreator } from '../../redux/auth-reducer'
+import { deleteLoginDataThunkCreator, getAuthUserDataThunkCreator } from '../../redux/auth-reducer'
 
 
 
@@ -29,6 +29,6 @@ return {
 }
 
 
-export default connect(mapStateToProps, {getAuthUserDataThunkCreator}/*{setAuthUserData}*/)(HeaderContainer);
+export default connect(mapStateToProps, {getAuthUserDataThunkCreator, deleteLoginDataThunkCreator})(HeaderContainer);
 
  
