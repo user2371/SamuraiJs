@@ -3,3 +3,8 @@
 .passwordField div {
     display: inline-block;
 }
+
+.summaryFormError {
+    color: red;
+    border: 2px solid red;
+}

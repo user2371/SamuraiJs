@@ -3,7 +3,7 @@
     grid-template-columns: 2fr 10fr;
 }
 
-.dialogsTextarea {
+/* .dialogsTextarea {
     background: black;
     border-radius: 15px;
     padding: 16px;
@@ -13,10 +13,10 @@
     min-width: 200px;
     max-width: 400px;
     margin: 10px;
-    box-shadow: inset 0px 0px 10px 4px white;
+    box-shadow: inset 0px 0px 10px 4px rgb(255, 255, 255);
 }
 .dialogsItems {}
 
-
+ */
 
 

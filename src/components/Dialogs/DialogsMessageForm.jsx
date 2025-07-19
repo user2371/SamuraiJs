@@ -14,7 +14,7 @@ const DialogsMessageForm = (props) => {
             placeholder="Please type your message here."
             validate={[reaquiredField, maxLength10]}
             />
-            <button>Add message</button>
+            <button className="btn">Add message</button>
         </form>
 
     )
