@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import UsersPagination from './UsersPagination/UsersPagination';
 import styles from './Users.module.css'
 import userIcon from "../../assets/images/userIcon.png";
 import Preloader from '../common/Preloader/Preloader';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 let Users = (props) => {
+
+   
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
     let createPages = (pages, pagesCount, currentPage) => {
@@ -29,6 +31,7 @@ let Users = (props) => {
         }
     }
     createPages(pages, pagesCount, props.currentPage);
+    console.log(props.users)
     return (
         <div className={styles.users}>
             <UsersPagination
@@ -51,11 +54,11 @@ let Users = (props) => {
                             <div className={styles.userLeftSide}>
                                 <NavLink to={"/profile/" + user.id}><div className={styles.userAvatar}><img src={user.photos.small !== null ? user.photos.small : userIcon} /></div></NavLink>
                                 <div className={styles.followBtnContainer}>
-                                    {user.followed
-                                        ? <button disabled={props.followingInProgress.some(id => id == user.id)} className={styles.redBtn} onClick={() => {                                           
+                                    {(user.followed)
+                                        ? <button disabled={props.followingInProgress.some(id => id == user.id) || !props.isAuth} className={styles.redBtn} onClick={() => {                                           
                                             props.unFollowThunkCreator(user.id)
                                         }}>Unfollow</button>
-                                        : <button disabled={props.followingInProgress.some(id => id == user.id)} className={styles.greenBtn} onClick={() => {                                          
+                                        : <button disabled={props.followingInProgress.some(id => id == user.id) || !props.isAuth} className={styles.greenBtn} onClick={() => {                                          
                                             props.followThunkCreator(user.id)
                                         }}>follow</button>
                                     }
@@ -68,8 +71,7 @@ let Users = (props) => {
                                     <p className={styles.userStatus}>{user.status}</p>
                                 </div>
                                 <div className={styles.location}>
-                                    <p>{"user.location.country"}</p>
-                                    <p>{"user.location.city"}</p>
+                                    <p>{`User ID : ${user.id}`}</p>
                                 </div>
                             </div>
                         </div>

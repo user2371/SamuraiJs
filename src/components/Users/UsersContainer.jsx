@@ -77,6 +77,7 @@ class UsersContainer extends React.Component {
             isFetching={this.props.isFetching}
             followingInProgress={this.props.followingInProgress}
             toggleFollowingProgress={this.props.toggleFollowingProgress}
+            isAuth={this.props.isAuth}
         />
     }
 }
@@ -89,22 +90,14 @@ let mapStateToProps = (state) => {
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress,
+        isAuth: state.authReducer.isAuth,
     }
 }
 
-/*let mapDispatchToProps = (dispatch) => {
-    return ({
-        follow: (userId) => dispatch(followAC(userId)),
-        unFollow: (userId) => dispatch(unFollowAC(userId)),    
-        setUsers: (users) => dispatch(setUsersAC(users)),
-        setCurrentPage: (currentPage) => dispatch(setCurrentPageAC(currentPage)),
-        setTotalUsersCount: (totalCount) => dispatch(setTotalUsersCount(totalCount)),
-        toggleIsFetching: (isFetching) => dispatch(toggleIsFetchingAC(isFetching))
-    })
-}*/
+
 
 export default compose(
-    withAuthRedirect,
+   // withAuthRedirect,
     connect(mapStateToProps,
     {
         followThunkCreator,

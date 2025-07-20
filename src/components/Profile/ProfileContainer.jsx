@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
 import { getUserProfileThunkCreator, getUserStatusThunkCreator, updateUserStatusThunkCreator } from '../../redux/profile-reducer';
@@ -13,6 +13,17 @@ function withRouter(Component) {
         let location = useLocation();
         let navigate = useNavigate();
         let params = useParams();
+        const { id } = useParams();
+
+        useEffect(() => {
+            if (!props.isAuth) {
+                navigate("/login");
+            }
+
+        }, [props.isAuth, navigate]);
+
+   
+
         return (
             <Component
                 {...props}
@@ -29,15 +40,15 @@ class ProfileContainer extends React.Component {
         super(props)
     }
     componentDidMount() {
-
         let userId = this.props.router.params.userId;
-        if (!userId) {            
+        if (!userId) {
             userId = this.props.autorizedUser;
         }
 
-        this.props.getUserStatusThunkCreator(userId)        
-        this.props.getUserProfileThunkCreator(userId)
-        
+        if (userId) {
+            this.props.getUserProfileThunkCreator(userId)
+            this.props.getUserStatusThunkCreator(userId)
+        }
     }
     render() {
         return <Profile {...this.props} ></Profile>
@@ -45,19 +56,18 @@ class ProfileContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
-    return { 
+    return {
         userProfile: state.profilePage.userProfile,
         userStatus: state.profilePage.userStatus,
         isAuth: state.authReducer.isAuth,
         autorizedUser: state.authReducer.id,
-     }
+    }
 }
 
 
 export default compose(
     connect(mapStateToProps, { getUserProfileThunkCreator, getUserStatusThunkCreator, updateUserStatusThunkCreator }),
-    withRouter
-)(ProfileContainer)
+    withRouter)(ProfileContainer)
 
 
 
