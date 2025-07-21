@@ -4,6 +4,7 @@ import { followThunkCreator, getUsers, toggleFollowingProgress, unFollowThunkCre
 import { compose } from 'redux';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
 import Users from './UsersPresentational';
+import { getcurrentPage, getfollowingInProgress, getisAuth, getisFetching, getpageSize, gettotalUsersCount, getUsersSelector } from '../../redux/selectors';
 
 class UsersContainer extends React.Component {
     constructor(props) {
@@ -82,19 +83,29 @@ class UsersContainer extends React.Component {
     }
 }
 
+// let mapStateToProps = (state) => {
+//     return {
+//         users: state.usersPage.users,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         currentPage: state.usersPage.currentPage,
+//         isFetching: state.usersPage.isFetching,
+//         followingInProgress: state.usersPage.followingInProgress,
+//         isAuth: state.authReducer.isAuth,
+//     }
+// }
+
 let mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
-        isAuth: state.authReducer.isAuth,
+        users: getUsersSelector(state),
+        pageSize: getpageSize(state),
+        totalUsersCount: gettotalUsersCount(state),
+        currentPage: getcurrentPage(state),
+        isFetching: getisFetching(state),
+        followingInProgress: getfollowingInProgress(state),
+        isAuth: getisAuth(state),
     }
 }
-
-
 
 export default compose(
    // withAuthRedirect,
