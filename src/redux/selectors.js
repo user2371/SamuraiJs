@@ -25,3 +25,5 @@ export const getfollowingInProgress = (state) => {
 export const getisAuth = (state) => {
 	return state.authReducer.isAuth
 }
+
+// в уроці 82 була тільки теорія по тому які проблеми вникикають при користуванні селекторами
