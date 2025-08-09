@@ -4,7 +4,7 @@ import { followThunkCreator, getUsers, toggleFollowingProgress, unFollowThunkCre
 import { compose } from 'redux';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
 import Users from './UsersPresentational';
-import { getcurrentPage, getfollowingInProgress, getisAuth, getisFetching, getpageSize, gettotalUsersCount, getUsersSelector } from '../../redux/selectors';
+import { getcurrentPage, getfollowingInProgress, getisAuth, getisFetching, getpageSize, gettotalUsersCount, getUsersSelector, getUsersSuperSelector } from '../../redux/users-selectors';
 
 class UsersContainer extends React.Component {
     constructor(props) {
@@ -97,7 +97,7 @@ class UsersContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        users: getUsersSelector(state),
+        users: getUsersSuperSelector(state),
         pageSize: getpageSize(state),
         totalUsersCount: gettotalUsersCount(state),
         currentPage: getcurrentPage(state),
