@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./AvaSection.module.css"
 import Preloader from "../../common/Preloader/Preloader";
 import UserStatusComponent from "./UserStatusComponent";
+import UserStatusHooks from "./UserStatusHooks";
 
 const AvaSection = (props) => {
 
@@ -15,7 +16,7 @@ const AvaSection = (props) => {
           <img src={props.userProfile.photos.large}></img>           
           <div className={styles.userDescription}>{props.userProfile.fullName} </div>
         </div>
-        <UserStatusComponent userStatus={props.userStatus} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator} />
+        <UserStatusHooks userStatus={props.userStatus} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator} />
       </div>
     )
   }
