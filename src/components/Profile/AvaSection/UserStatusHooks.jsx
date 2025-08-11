@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from 'react';
 import styles from './AvaSection.module.css'
 
 const UserStatusHooks = (props) => {
     let [editMode, setEditMode] = useState(false)
     let [userStatus, setUserStatus] = useState(props.userStatus)
+
+    useEffect(()=> {
+        setUserStatus(props.userStatus)
+    }, [props.userStatus])
 
     function activateEditMode () {
         setEditMode(true)
