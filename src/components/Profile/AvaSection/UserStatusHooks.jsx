@@ -37,3 +37,5 @@ const UserStatusHooks = (props) => {
 }
 
 export default UserStatusHooks
+
+// В цьому уроці була тількт теорія по Virtual DOM. Коду ніякого не пислаи
