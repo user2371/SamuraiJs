@@ -36,6 +36,7 @@ function withRouter(Component) {
 }
 
 class ProfileContainer extends React.Component {
+    
     constructor(props) {
         super(props)
     }
@@ -51,6 +52,7 @@ class ProfileContainer extends React.Component {
         }
     }
     render() {
+        console.log("ProfileContainer")
         return <Profile {...this.props} ></Profile>
     }
 }

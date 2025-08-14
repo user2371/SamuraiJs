@@ -4,25 +4,24 @@ import Post from './Post/Post';
 import MyPostsForm from './MyPostsForm';
 
 
-const MyPosts = (props) => {
-  let postsComponents = props.postData.map((post) => <Post key={post.id} onLikeClick={props.onLikeClick} message ={post.message} id={post.id} likesCount = {post.likesCount} dislikesCount={post.dislikesCount} idCounter={props.idCounter}/>)
+const MyPosts = React.memo((props) => {
+  let postsComponents = props.postData.map((post) => <Post key={post.id} onLikeClick={props.onLikeClick} message={post.message} id={post.id} likesCount={post.likesCount} dislikesCount={post.dislikesCount} idCounter={props.idCounter} />)
   let newPostElement = React.createRef();
 
-let customOnsubmit = (value) => {
-  console.log(value)
-  props.onAddPost(value.newPostText);
-}
+  let customOnsubmit = (value) => {
+    console.log(value)
+    props.onAddPost(value.newPostText);
+  }
 
   return (
     <div>
       <h3>My posts</h3>
-      <MyPostsForm onSubmit={customOnsubmit}/>
+      <MyPostsForm onSubmit={customOnsubmit} />
       <div>
-         {postsComponents}    
+        {postsComponents}
       </div>
     </div>
   )
- 
 }
-
+)
 export default MyPosts;

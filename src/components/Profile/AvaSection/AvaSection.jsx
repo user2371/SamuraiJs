@@ -4,7 +4,6 @@ import Preloader from "../../common/Preloader/Preloader";
 import UserStatusHooks from "./UserStatusHooks";
 
 const AvaSection = (props) => {
-
   if (!props.userProfile) {    
     return <Preloader></Preloader>
   } else {

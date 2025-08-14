@@ -5,8 +5,6 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 
 const Profile = (props) => {
-  
-   debugger
   return (    
     <div>
       <AvaSection userProfile={props.userProfile} userStatus={props.userStatus} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator}/>
