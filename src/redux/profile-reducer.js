@@ -5,6 +5,7 @@ const ADD_POST = "ADD-POST";
 const UPDATE_LIKES_COUNT = "UPDATE-LIKES-COUNT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
+const DELETE_POST = "DELETE_POST";
 
 const initialState = {
     postData: [
@@ -49,6 +50,9 @@ const profileReducer = (state = initialState, action) => {
             return stateCopy
         case SET_USER_PROFILE:
             return { ...state, userProfile: action.userProfile }
+        case DELETE_POST:
+            return { ...state, postData: state.postData.filter(el => el.id != action.id) }
+
         default:
             return state;
     }
@@ -75,6 +79,10 @@ export const setUserProfile = (userProfile) => {
 export const setUserStatus = (userStatus) => {
     return { type: SET_USER_STATUS, userStatus: userStatus }
 }
+
+export const deletePostAC = (id) => {
+    return { type: DELETE_POST, id: id }
+};
 
 export const getUserProfileThunkCreator = (userId) => {
     return (dispatch) => {
