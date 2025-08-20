@@ -1,7 +1,7 @@
 import { stopSubmit } from "redux-form"
 import { authAPI } from "../api/api"
 
-const SET_USER_DATA = "SET_USER_DATA"
+const SET_USER_DATA = "social_network/auth_reducer/SET_USER_DATA"
 
 let initialState = {
     id: null,
@@ -28,43 +28,42 @@ export let setAuthUserData = (id, email, login, isAuth) => {
 }
 
 export const getAuthUserDataThunkCreator = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
 
-       return  authAPI.me()
-        
-            .then((response) => {
-                if (response.data.resultCode === 0) {
-                    let { id, email, login } = response.data.data;
+        const response = await authAPI.me()
 
-                    dispatch(setAuthUserData(id, email, login, true));
-                }
-            })
+        if (response.data.resultCode === 0) {
+            let { id, email, login } = response.data.data;
+
+            dispatch(setAuthUserData(id, email, login, true));
+        }
+
     }
 }
 
 export const postLoginDataThunkCreator = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.login(email, password, rememberMe)
-            .then((response) => {
-                if (response.data.resultCode === 0) {
-                    dispatch(getAuthUserDataThunkCreator())
-                }
-                else {
-                    let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-                    dispatch(stopSubmit("Login", { _error: errorMessage }))
-                }
-            })
+    return async (dispatch) => {
+        const response = await authAPI.login(email, password, rememberMe)
+
+        if (response.data.resultCode === 0) {
+            dispatch(getAuthUserDataThunkCreator())
+        }
+        else {
+            let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+            dispatch(stopSubmit("Login", { _error: errorMessage }))
+        }
+
     }
 }
 
 export const deleteLoginDataThunkCreator = () => {
-    return (dispatch) => {
-        authAPI.logout()
-            .then((response) => {
-                if (response.data.resultCode === 0) {
-                    dispatch(setAuthUserData(null, null, null, false))
-                }
-            })
+    return async (dispatch) => {
+        const response = await authAPI.logout()
+
+        if (response.data.resultCode === 0) {
+            dispatch(setAuthUserData(null, null, null, false))
+        }
+
     }
 }
 

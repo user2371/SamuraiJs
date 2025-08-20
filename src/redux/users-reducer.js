@@ -72,41 +72,41 @@ export let toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFet
 export let toggleFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching: isFetching, userId: userId })
 
 export const getUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
         dispatch(setCurrentPage(currentPage));
-        usersAPI.getUsers(currentPage, pageSize)
-            .then((response) => {
-                dispatch(toggleIsFetching(false))
-                dispatch(setUsers(response.items))
-                dispatch(setTotalUsersCount(response.totalCount))
-            })
+        const response = await usersAPI.getUsers(currentPage, pageSize);
+
+        dispatch(toggleIsFetching(false))
+        dispatch(setUsers(response.items))
+        dispatch(setTotalUsersCount(response.totalCount))
+
     }
 }
 
 export const followThunkCreator = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));
-        usersAPI.follow(userId)
-            .then(response => {
-                if (response.data.resultCode == 0) {
-                    dispatch(followSuccess(userId))
-                }
-                dispatch(toggleFollowingProgress(false, userId));
-            })
+        const response = await usersAPI.follow(userId)
+
+        if (response.data.resultCode == 0) {
+            dispatch(followSuccess(userId))
+        }
+        dispatch(toggleFollowingProgress(false, userId));
+
     }
 }
 
 export const unFollowThunkCreator = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));
-        usersAPI.unFollow(userId)
-            .then(response => {
-                if (response.data.resultCode == 0) {
-                    dispatch(unFollowSuccess(userId))
-                }
-                dispatch(toggleFollowingProgress(false, userId));
-            })
+        const response = await usersAPI.unFollow(userId)
+
+        if (response.data.resultCode == 0) {
+            dispatch(unFollowSuccess(userId))
+        }
+        dispatch(toggleFollowingProgress(false, userId));
+
     }
 }
 

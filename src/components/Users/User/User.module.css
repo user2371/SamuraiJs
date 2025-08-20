@@ -1,0 +1,63 @@
+.userAvatar img {
+    width: 100px;
+}
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid #ff8ae1ed;
+    box-shadow: 5px -5px 10px 1px #db6abf;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.user:hover {
+    transform: scale(1.02);
+    background-color: #514b82;
+    color: white;
+;
+}
+
+.userLeftSide {}
+
+.followBtnContainer {}
+
+.followBtnContainer button {
+    min-width: 100px;
+    display: block;
+    margin: 0 auto;
+
+}
+button:disabled {
+    color: red;
+    opacity: 0.3;
+}
+.redBtn {
+    background-color: rgb(228, 82, 82);
+    color: white;
+}
+
+.greenBtn {
+    background-color: rgb(8, 189, 8);
+    color: black;
+}
+
+.userDescription {
+    display: flex;
+    flex-grow: 1;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.userStatus {
+    word-wrap: break-word;
+    max-width: 650px;
+}
+
+.location {
+    padding: 10px;
+    text-align: center;
+}
+
+
+
