@@ -1,8 +1,20 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+// import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+import { createRoot } from 'react-dom/client';
+import { act } from 'react-dom/test-utils';
+import SamuraiJsApp from './App';
+
+test('renders SamuraiJsApp without crashing', () => {
+  const div = document.createElement('div');
+  const root = createRoot(div);
+  
+  act(() => {
+    root.render(<SamuraiJsApp />);
+  });
+  
+  act(() => {
+    root.unmount();
+  });
 });

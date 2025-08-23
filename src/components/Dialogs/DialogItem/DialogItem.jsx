@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink } from "../../../../node_modules/react-router-dom/dist/index";
 import styles from "./DialogItem.module.css"
+import { NavLink } from "react-router-dom";
 
 const activeLink = ({ isActive }) => isActive ? styles.active : undefined;
 const DialogItem = (props) => {

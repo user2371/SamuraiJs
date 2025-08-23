@@ -1,18 +1,19 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
-import { connect } from 'react-redux';
+import { connect, Provider } from 'react-redux';
 
 import { useLocation, useNavigate, useParams, } from "react-router-dom";
 import { compose } from 'redux';
 import { setInitializedSuccess, setInitializedSuccessThunkCreator } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
+import store from './redux/redux-store';
 
 function withRouter(Component) {
   function ComponentWithRouterProp(props) {
@@ -47,7 +48,7 @@ class App extends React.Component {
           <Navbar />
           <div className="appWrapperContent">
             <Routes>
-              <Route path="/profile/:userId?" element={<ProfileContainer/>}></Route>
+              <Route path="/profile/:userId?" element={<ProfileContainer />}></Route>
               <Route path="/dialogs/*" element={<DialogsContainer />}></Route>
               <Route path="/users/*" element={<UsersContainer />}></Route>
               <Route path="/login/*" element={<Login />}></Route>
@@ -62,7 +63,20 @@ let mapStateToProps = (state) => {
   return { initializedSuccess: state.app.initializedSuccess }
 }
 
-export default compose(
+/*export default*/ const AppContainer = compose(
   withRouter,
   connect(mapStateToProps, { setInitializedSuccessThunkCreator })
 )(App)
+
+
+let SamuraiJsApp = (props) => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    </BrowserRouter>
+  )
+}
+
+export default SamuraiJsApp;

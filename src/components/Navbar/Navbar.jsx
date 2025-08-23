@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./Navbar.module.css"
-import { NavLink } from '../../../node_modules/react-router-dom/dist/index';
+import { NavLink } from 'react-router-dom';
 
 const activeLink = ({isActive}) => isActive ? styles.active : undefined;
 

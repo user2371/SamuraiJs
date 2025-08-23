@@ -42,3 +42,4 @@ it("Length of postData should be decrremented after deleting", () => {
     // очікуваний результат
     expect(stateCopy.postData.length).toBe(2)
 })
+
