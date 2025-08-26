@@ -1,30 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './UsersPagination.module.css';
 
 let UsersPagination = function (props) {
-     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
-    let pages = [];
-    let createPages = (pages, pagesCount, currentPage) => {
+    const [pages, setPages] = useState([]);
+
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+
+    const createPages = (pagesCount, currentPage) => {
+        let pagesArray = [];
+
         if (pagesCount > 5) {
-            if (currentPage > 2) {
+            if (currentPage > 2 && currentPage < pagesCount - 1) {
                 for (let i = currentPage - 2; i <= currentPage + 2; i++) {
-                    pages.push(i)
-                    if (i == pagesCount) break
+                    if (i <= pagesCount) pagesArray.push(i);
                 }
-            }
-            else {
-                for (let i = 1; i <= 5; i++) {
-                    pages.push(i)
-                    if (i == pagesCount) break
+            } else if (currentPage <= 2) {
+                for (let i = 1; i <= 5 && i <= pagesCount; i++) {
+                    pagesArray.push(i);
+                }
+            } else {
+                for (let i = pagesCount - 4; i <= pagesCount; i++) {
+                    if (i > 0) pagesArray.push(i);
                 }
             }
         } else {
             for (let i = 1; i <= pagesCount; i++) {
-                pages.push(i)
+                pagesArray.push(i);
             }
         }
-    }
-    createPages(pages, pagesCount, props.currentPage);
+
+        return pagesArray;
+    };
+
+    useEffect(() => {
+        const newPages = createPages(pagesCount, props.currentPage);
+        setPages(newPages);
+    }, [pagesCount, props.currentPage]);
     return (
         <div className={styles.Pagination}>
                     <div className={styles.firstPageDoubleArrow} onClick={() => { props.onFirstPageDoubleArrowClick() }}>First page</div>
