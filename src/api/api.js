@@ -37,7 +37,7 @@ export const authAPI = {
     },
 
     login(email, password, rememberMe) {
-        return instance.post("auth/login", {email, password, rememberMe})
+        return instance.post("auth/login", { email, password, rememberMe })
     },
 
     logout(email, password, rememberMe) {
@@ -55,8 +55,13 @@ export const profileAPI = {
         return instance.get(`profile/status/` + userId)
     },
 
-     updateUserStatus(status) {
-        return instance.put(`profile/status/`, {status: status})
+    updateUserStatus(status) {
+        return instance.put(`profile/status/`, { status: status })
+    },
+    updateUserPhoto(file) {
+        let formData = new FormData();
+        formData.append("image", file)
+        return instance.put(`profile/photo/`, formData, { headers: { "Content-Type": "multipart/form-data" } })
     }
 }
 

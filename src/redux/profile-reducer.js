@@ -6,6 +6,7 @@ const UPDATE_LIKES_COUNT = "UPDATE-LIKES-COUNT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
 const DELETE_POST = "DELETE_POST";
+const SET_USER_AVATAR_SUCCESS = "SET_USER_AVATAR_SUCCESS";
 
 const initialState = {
     postData: [
@@ -47,7 +48,8 @@ const profileReducer = (state = initialState, action) => {
             return { ...state, userProfile: action.userProfile }
         case DELETE_POST:
             return { ...state, postData: state.postData.filter(el => el.id != action.id) }
-
+        case SET_USER_AVATAR_SUCCESS:
+            return { ...state, userProfile: { ...state.userProfile, photos: action.photos } }
         default:
             return state;
     }
@@ -71,6 +73,10 @@ export const setUserStatus = (userStatus) => {
 
 export const deletePostAC = (id) => {
     return { type: DELETE_POST, id: id }
+};
+
+export const setUserAvatarAC = (photos) => {
+    return { type: SET_USER_AVATAR_SUCCESS, photos: photos }
 };
 
 export const getUserProfileThunkCreator = (userId) => {
@@ -99,6 +105,16 @@ export const updateUserStatusThunkCreator = (userStatus) => {
             dispatch(setUserStatus(userStatus))
         }
 
+    }
+}
+
+export const savePhotoThunkCreator = (file) => {
+    return async (dispatch) => {
+        const response = await profileAPI.updateUserPhoto(file)
+
+        if (response.data.resultCode === 0) {
+            dispatch(setUserAvatarAC(response.data.data.photos))
+        }
     }
 }
 export default profileReducer;
