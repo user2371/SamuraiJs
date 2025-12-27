@@ -7,7 +7,7 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 const Profile = (props) => {
   return (    
     <div>
-      <AvaSection savePhotoThunkCreator={props.savePhotoThunkCreator} isOwner={props.isOwner} userProfile={props.userProfile} userStatus={props.userStatus} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator}/>
+      <AvaSection savePhotoThunkCreator={props.savePhotoThunkCreator} updateUserPhotoMock={props.updateUserPhotoMock} isOwner={1} userProfile={props.userProfile} userStatus={props.userStatus} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator} updateUserPhotoThunkCreator={props.updateUserPhotoThunkCreator}/>
       <MyPostsContainer/>
     </div>
   )

@@ -7,6 +7,7 @@ const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_USER_STATUS = "SET_USER_STATUS";
 const DELETE_POST = "DELETE_POST";
 const SET_USER_AVATAR_SUCCESS = "SET_USER_AVATAR_SUCCESS";
+const SET_PHOTO = "SET_PHOTO";
 
 const initialState = {
   postData: [
@@ -57,6 +58,17 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         userProfile: { ...state.userProfile, photos: action.photos },
       };
+    case SET_PHOTO:
+      return {
+        ...state,
+        userProfile: {
+          ...state.userProfile,
+          photos: {
+            small: action.photoUrl,
+            large: action.photoUrl,
+          },
+        },
+      };
     default:
       return state;
   }
@@ -86,6 +98,11 @@ export const setUserAvatarAC = (photos) => {
   return { type: SET_USER_AVATAR_SUCCESS, photos: photos };
 };
 
+export const setPhotoAC = (photoUrl) => ({
+  type: SET_PHOTO,
+  photoUrl,
+});
+
 export const getUserProfileThunkCreator = (userId) => {
   return async (dispatch) => {
     const response = await usersAPI.getProfile(userId);
@@ -110,13 +127,13 @@ export const updateUserStatusThunkCreator = (userId, userStatus) => {
   };
 };
 
-export const savePhotoThunkCreator = (file) => {
+export const updateUserPhotoThunkCreator = (userId1, photo) => {
   return async (dispatch) => {
-    const response = await profileAPI.updateUserPhoto(file);
-
-    if (response.data.resultCode === 0) {
-      dispatch(setUserAvatarAC(response.data.data.photos));
-    }
+    const response = await profileAPI.updateUserPhoto(1, photo);
+    dispatch(setUserAvatarAC(response.data.photos));
   };
+};
+export const updateUserPhotoMock = (photoUrl) => (dispatch) => {
+  dispatch(setPhotoAC(photoUrl));
 };
 export default profileReducer;

@@ -67,11 +67,12 @@ export const profileAPI = {
   updateUserStatus(userId, newStatus) {
     return instance.patch(`/profiles/${userId}`, { status: newStatus });
   },
-  updateUserPhoto(file) {
-    let formData = new FormData();
-    formData.append("image", file);
-    return instance.put(`profiles/photo/`, formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
-  },
+updateUserPhoto(userId, imageUrl) {
+  return instance.patch(`/profiles/${userId}`, {
+    photos: {
+      small: imageUrl,
+      large: imageUrl
+    }
+  });
+}
 };
