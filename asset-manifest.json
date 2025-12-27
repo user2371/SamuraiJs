@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/SamuraiJs/static/css/main.db63d25b.css",
-    "main.js": "/SamuraiJs/static/js/main.6485cea4.js",
+    "main.css": "/SamuraiJs/static/css/main.9efcae0a.css",
+    "main.js": "/SamuraiJs/static/js/main.d7c0e0b3.js",
     "static/js/453.68693753.chunk.js": "/SamuraiJs/static/js/453.68693753.chunk.js",
     "static/css/450.7224fbf3.chunk.css": "/SamuraiJs/static/css/450.7224fbf3.chunk.css",
     "static/js/450.eaa4c12a.chunk.js": "/SamuraiJs/static/js/450.eaa4c12a.chunk.js",
-    "static/media/NailJailLogo1.png": "/SamuraiJs/static/media/NailJailLogo1.d4ccfb20fabf996e6caa.png",
-    "static/media/nailJail.jpg": "/SamuraiJs/static/media/nailJail.c719ba4a345fe42b75de.jpg",
+    "static/media/main-background.jpg": "/SamuraiJs/static/media/main-background.c560aebf237db0e69cf9.jpg",
+    "static/media/Logo.svg": "/SamuraiJs/static/media/Logo.e6652cafae8bb1e93d7099c0c4a28cac.svg",
     "index.html": "/SamuraiJs/index.html",
-    "main.db63d25b.css.map": "/SamuraiJs/static/css/main.db63d25b.css.map",
-    "main.6485cea4.js.map": "/SamuraiJs/static/js/main.6485cea4.js.map",
+    "main.9efcae0a.css.map": "/SamuraiJs/static/css/main.9efcae0a.css.map",
+    "main.d7c0e0b3.js.map": "/SamuraiJs/static/js/main.d7c0e0b3.js.map",
     "453.68693753.chunk.js.map": "/SamuraiJs/static/js/453.68693753.chunk.js.map",
     "450.7224fbf3.chunk.css.map": "/SamuraiJs/static/css/450.7224fbf3.chunk.css.map",
     "450.eaa4c12a.chunk.js.map": "/SamuraiJs/static/js/450.eaa4c12a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.db63d25b.css",
-    "static/js/main.6485cea4.js"
+    "static/css/main.9efcae0a.css",
+    "static/js/main.d7c0e0b3.js"
   ]
 }
