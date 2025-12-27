@@ -1,13 +1,16 @@
 .nav {
     grid-area: n;
     padding: 20px;
-    background-color: #F7CAC9;
+    background-color: #111827;
   }
+.nav a {
+  color: #f7f7f8;
+}
 
-  .active {
-    color: rgb(155, 132, 6);
-    font-weight: 700;
-    /* font-size: 110%; */
+.nav a.active {
+  color: rgb(240, 212, 76);
+  font-weight: 700;
+  /* font-size: 110%; */
   }
   
   .dialogItemLink.active {

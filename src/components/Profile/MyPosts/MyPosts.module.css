@@ -2,13 +2,12 @@ textarea {
     margin-top: 10px;
     min-height: 60px;
     display: block;
-    background: black;
-    border-radius: 15px;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
     padding: 16px;
-    color: white;
+    color: rgb(0, 0, 0);
     width: 100%;
     box-sizing: border-box;
-    box-shadow: inset 0px 0px 10px 3px rgb(255, 115, 0);
 }
 .myPostBtn
  {

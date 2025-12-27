@@ -5,10 +5,11 @@
 .user {
     display: flex;
     justify-content: space-between;
-    border: 2px solid #ff8ae1ed;
-    box-shadow: 5px -5px 10px 1px #db6abf;
+    border: 2px solid black;
+    box-shadow: 5px -5px 10px 1px #1F2933;
     padding: 10px;
     margin-bottom: 10px;
+    background-color: #FFFFFF;
 }
 
 .user:hover {

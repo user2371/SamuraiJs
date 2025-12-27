@@ -1,7 +1,7 @@
 .header {
   grid-area: h;
   padding: 20px;
-  background-color: #ff8ae1;
+  background-color: #1F2933;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,8 +9,7 @@
 
 .header img {
   width: 100px;
-  box-shadow: 5px 5px 5px 0px black;
-  background-color: black;
+  box-shadow: 0px 0px 15px 10px black;
 }
 
 .loginBlock {

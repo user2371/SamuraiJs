@@ -15,7 +15,7 @@ const AvaSection = (props) => {
     return <Preloader></Preloader>
   } else {
     return (
-      <div>
+      <div className={styles.avaSection}>
         <div className={styles.contentTopImg}></div>
         <div className={styles.userImageBlock}>
           <img src={props.userProfile.photos.large || userIcon}></img>   

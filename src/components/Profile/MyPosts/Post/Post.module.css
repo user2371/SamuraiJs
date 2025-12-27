@@ -4,11 +4,11 @@
     position: relative;
     padding: 10px;
     display: flex;
-    border: 2px solid #ff8ae1;
+    border: 2px solid black;
     border-radius: 10px;
     margin-top: 15px;
     margin-bottom: 10px;
-    box-shadow: 5px -5px 10px 1px #db6abf;
+    box-shadow: 5px -5px 10px 1px #1F2933;
 }
 
 .avatar img {

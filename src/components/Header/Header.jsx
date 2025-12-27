@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from "./Header.module.css"
-import NailJail from "../../assets/images/NailJailLogo1.png"
+import Logo from "../../assets/images/Logo.svg"
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 const Header = (props) => {
     return (
         <header className={styles.header}>
-            <img src={NailJail}></img>
+            <img src={Logo}></img>
             <div className={styles.loginBlock}>
                 {(props.isAuth)
                     ? <div>{props.login}
