@@ -12,7 +12,7 @@ const Header = (props) => {
             <div className={styles.loginBlock}>
                 {(props.isAuth)
                     ? <div>{props.login}
-                        <div onClick={props.deleteLoginDataThunkCreator} ><button className={`${styles.logoutBtn} btn`}>Logout</button></div>
+                        <div onClick={props.logout} ><button className={`${styles.logoutBtn} btn`}>Logout</button></div>
                       </div>
                     :
                     <NavLink to="/login" className={styles.loginLink}>Login</NavLink>

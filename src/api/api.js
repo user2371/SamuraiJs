@@ -1,67 +1,76 @@
 import axios from "axios";
 
-const baseURL = "https://social-network.samuraijs.com/api/1.0/"
+const baseURL = "https://samurai-mock-api.onrender.com";
 const instance = axios.create({
-    withCredentials: true,
-    baseURL: baseURL,
-    headers: {
-        "API-KEY": "1f8db28f-a890-4e11-9abd-f0649576c692",
-    }
-})
-
+  withCredentials: true,
+  baseURL: baseURL,
+  headers: {
+    "API-KEY": "1f8db28f-a890-4e11-9abd-f0649576c692",
+  },
+});
 
 export const usersAPI = {
-    getUsers(currentPage = 1, pageSize = 10) {
-        return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => response.data)
-
-    },
-
-    follow(userId) {
-        return instance.post(`follow/${userId}`)
-    },
-
-    unFollow(userId) {
-        return instance.delete(`follow/${userId}`)
-    },
-
-    getProfile(userId) {
-        return profileAPI.getProfile(userId)
+  getUsers(currentPage = 1, pageSize = 10) {
+    return instance.get('/users', {
+    params: {
+      _page: currentPage,
+      _limit: pageSize
     }
+  });
+},
 
-}
+  follow(userId) {
+    return instance.post(`follow/${userId}`);
+  },
+
+  unFollow(userId) {
+    return instance.delete(`follow/${userId}`);
+  },
+
+  getProfile(userId) {
+    return profileAPI.getProfile(userId);
+  },
+};
 
 export const authAPI = {
-    me() {
-        return instance.get("auth/me")
-    },
+  me() {
+    return instance.get("/auth");
+  },
 
-    login(email, password, rememberMe) {
-        return instance.post("auth/login", { email, password, rememberMe })
-    },
+  login(login, password) {
+    return instance.get("/usersCredentials", { params: {login, password} });
+  },
+  setAuth(data) {
+    return instance.patch("/auth", data);
+  },
 
-    logout(email, password, rememberMe) {
-        return instance.delete("auth/login")
-    },
-}
-
+  logout() {
+    return instance.patch('/auth', {
+      id: null,
+      login: null,
+      email: null,
+      isAuth: false
+    });
+  }
+};
 
 export const profileAPI = {
-    getProfile(userId) {
-        return instance.get(`profile/` + userId)
-    },
+  getProfile(userId) {
+    return instance.get(`profiles/` + userId);
+  },
 
-    getProfileStatus(userId) {
-        return instance.get(`profile/status/` + userId)
-    },
+  getProfileStatus(userId, newStatus) {
+    return instance.patch(`profiles/` + userId, {status: newStatus});
+  },
 
-    updateUserStatus(status) {
-        return instance.put(`profile/status/`, { status: status })
-    },
-    updateUserPhoto(file) {
-        let formData = new FormData();
-        formData.append("image", file)
-        return instance.put(`profile/photo/`, formData, { headers: { "Content-Type": "multipart/form-data" } })
-    }
-}
-
+  updateUserStatus(userId, newStatus) {
+    return instance.put(`profile/status/`, { status: newStatus });
+  },
+  updateUserPhoto(file) {
+    let formData = new FormData();
+    formData.append("image", file);
+    return instance.put(`profile/photo/`, formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+  },
+};

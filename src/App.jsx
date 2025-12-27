@@ -10,7 +10,7 @@ import Login from './components/Login/Login';
 import { connect, Provider } from 'react-redux';
 import { useLocation, useNavigate, useParams, } from "react-router-dom";
 import { compose } from 'redux';
-import { setInitializedSuccess, setInitializedSuccessThunkCreator } from './redux/app-reducer';
+import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import store from './redux/redux-store';
 import { lazy } from 'react';   
@@ -36,7 +36,7 @@ function withRouter(Component) {
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.setInitializedSuccessThunkCreator();
+    this.props.initializeApp();
   }
 
   render() {
@@ -66,8 +66,9 @@ let mapStateToProps = (state) => {
 }
 
 /*export default*/ const AppContainer = compose(
-  withRouter,
-  connect(mapStateToProps, { setInitializedSuccessThunkCreator })
+  
+  connect(mapStateToProps, { initializeApp }),
+  withRouter
 )(App)
 
 

@@ -1,36 +1,28 @@
-import { getAuthUserDataThunkCreator } from "./auth-reducer"
+import { getAuthMe } from "./auth-reducer";
 
+const SET_INITIALIZED_SUCCESS = "SET_INITIALIZED_SUCCESS";
 
-const SET_INISIALIZED_SUCCESS = "SET_INITIALIZED_SUCCESS"
+const initialState = {
+  initializedSuccess: false,
+};
 
-let initialState = {
-    initializedSuccess: false,
-}
+const appReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_INITIALIZED_SUCCESS:
+      return { ...state, initializedSuccess: true };
+    default:
+      return state;
+  }
+};
 
-let appReducer = (state = initialState, action) => {
-    switch (action.type) {
+export const setInitializedSuccess = () => ({
+  type: SET_INITIALIZED_SUCCESS
+});
 
-        case SET_INISIALIZED_SUCCESS:
-            return { ...state, initializedSuccess: true, }
-        default:
-            return state
-    }
-
-}
-
-export let setInitializedSuccess = () => {
-    return { type: SET_INISIALIZED_SUCCESS }
-}
-
-export const setInitializedSuccessThunkCreator = () => {
-    return (dispatch) => {
-        dispatch(getAuthUserDataThunkCreator())
-            .then(() => {
-                dispatch(setInitializedSuccess())
-            }
-            )
-    }
-}
-
+// 🔹 initialization app
+export const initializeApp = () => async (dispatch) => {
+  await dispatch(getAuthMe());
+  dispatch(setInitializedSuccess());
+};
 
 export default appReducer;

@@ -1,70 +1,67 @@
-import { stopSubmit } from "redux-form"
-import { authAPI } from "../api/api"
+import { stopSubmit } from "redux-form";
+import { authAPI } from "../api/api";
 
-const SET_USER_DATA = "social_network/auth_reducer/SET_USER_DATA"
+
+const SET_AUTH = "SET_AUTH";
 
 let initialState = {
-    id: null,
-    email: null,
-    login: null,
-    isAuth: false,
-}
+  id: null,
+  email: null,
+  login: null,
+  isAuth: false,
+};
 
 let authReducer = (state = initialState, action) => {
-    switch (action.type) {
+  switch (action.type) {
+    case SET_AUTH:
+      return { ...state, ...action.payload };
+    default:
+      return state;
+  }
+};
 
-        case SET_USER_DATA:
-            return { ...state, ...action.userData }
-        default:
-            return state
-    }
+export const setAuth = (payload) => ({
+  type: SET_AUTH,
+  payload
+});
 
-}
+export const getAuthMe = () => async (dispatch) => {
+  const res = await authAPI.me();
+  if (res.data.isAuth) {
+    dispatch(setAuth(res.data));
+  }
+};
+export const login = (login, password) => async (dispatch) => {
+  const res = await authAPI.login(login, password);
 
-export let setAuthUserData = (id, email, login, isAuth) => {
+  if (res.data.length === 1) {
+    const user = res.data[0];
+
+    const authData = {
+      id: user.id,
+      login: user.login,
+      email: user.email,
+      isAuth: true
+    };
+
+    await authAPI.setAuth(authData);
+    dispatch(setAuth(authData));
+  } else {
+    alert('Wrong login or password');
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  await authAPI.logout();
+  dispatch(setAuth({
+    id: null,
+    login: null,
+    email: null,
+    isAuth: false
+  }));
+};
 
 
-    return { type: SET_USER_DATA, userData: { id: id, email: email, login: login, isAuth } }
-}
 
-export const getAuthUserDataThunkCreator = () => {
-    return async (dispatch) => {
-
-        const response = await authAPI.me()
-
-        if (response.data.resultCode === 0) {
-            let { id, email, login } = response.data.data;
-
-            dispatch(setAuthUserData(id, email, login, true));
-        }
-
-    }
-}
-
-export const postLoginDataThunkCreator = (email, password, rememberMe) => {
-    return async (dispatch) => {
-        const response = await authAPI.login(email, password, rememberMe)
-
-        if (response.data.resultCode === 0) {
-            dispatch(getAuthUserDataThunkCreator())
-        }
-        else {
-            let errorMessage = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
-            dispatch(stopSubmit("Login", { _error: errorMessage }))
-        }
-
-    }
-}
-
-export const deleteLoginDataThunkCreator = () => {
-    return async (dispatch) => {
-        const response = await authAPI.logout()
-
-        if (response.data.resultCode === 0) {
-            dispatch(setAuthUserData(null, null, null, false))
-        }
-
-    }
-}
 
 export default authReducer;
