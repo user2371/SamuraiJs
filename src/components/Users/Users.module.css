@@ -17,6 +17,13 @@
     background: currentColor;
     animation: l6 2s infinite;
 }
+.users__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 
 @keyframes l6 {
     100% {

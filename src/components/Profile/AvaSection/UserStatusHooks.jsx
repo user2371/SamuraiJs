@@ -16,7 +16,8 @@ const UserStatusHooks = (props) => {
 
      function deavtivateEditMode () {
         setEditMode(false)
-        props.updateUserStatusThunkCreator(userStatus)
+        props.updateUserStatusThunkCreator(props.userId, userStatus)
+        console.log("UPDATE STATUS:", userStatus, "userId", props.userId);
     }
      function onStatusChange (evt) {
         setUserStatus(evt.currentTarget.value)

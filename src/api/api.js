@@ -11,20 +11,20 @@ const instance = axios.create({
 
 export const usersAPI = {
   getUsers(currentPage = 1, pageSize = 10) {
-    return instance.get('/users', {
-    params: {
-      _page: currentPage,
-      _limit: pageSize
-    }
-  });
-},
+    return instance.get("/users", {
+      params: {
+        _page: currentPage,
+        _limit: pageSize,
+      },
+    });
+  },
 
   follow(userId) {
-    return instance.post(`follow/${userId}`);
+    return instance.patch(`/users/${userId}`, { followed: true });
   },
 
   unFollow(userId) {
-    return instance.delete(`follow/${userId}`);
+    return instance.patch(`/users/${userId}`, { followed: false });
   },
 
   getProfile(userId) {
@@ -38,20 +38,20 @@ export const authAPI = {
   },
 
   login(login, password) {
-    return instance.get("/usersCredentials", { params: {login, password} });
+    return instance.get("/usersCredentials", { params: { login, password } });
   },
   setAuth(data) {
     return instance.patch("/auth", data);
   },
 
   logout() {
-    return instance.patch('/auth', {
+    return instance.patch("/auth", {
       id: null,
       login: null,
       email: null,
-      isAuth: false
+      isAuth: false,
     });
-  }
+  },
 };
 
 export const profileAPI = {
@@ -59,17 +59,18 @@ export const profileAPI = {
     return instance.get(`profiles/` + userId);
   },
 
-  getProfileStatus(userId, newStatus) {
-    return instance.patch(`profiles/` + userId, {status: newStatus});
-  },
+  // getProfileStatus(userId, newStatus) {
+  //   debugger
+  //   return instance.get(`profiles/` + userId, { status: newStatus });
+  // },
 
   updateUserStatus(userId, newStatus) {
-    return instance.put(`profile/status/`, { status: newStatus });
+    return instance.patch(`/profiles/${userId}`, { status: newStatus });
   },
   updateUserPhoto(file) {
     let formData = new FormData();
     formData.append("image", file);
-    return instance.put(`profile/photo/`, formData, {
+    return instance.put(`profiles/photo/`, formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
   },

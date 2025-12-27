@@ -22,7 +22,7 @@ const AvaSection = (props) => {
           {props.isOwner ? <input type="file" onChange={onMainPhotoSelected}/> : null}        
           <div className={styles.userDescription}>{props.userProfile.fullName} </div>
         </div>
-        <UserStatusHooks userStatus={props.userStatus} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator} />
+        <UserStatusHooks userStatus={props.userStatus} userId={props.userProfile.id} updateUserStatusThunkCreator={props.updateUserStatusThunkCreator} />
       </div>
     )
   }
