@@ -6,7 +6,7 @@ let Preloader = (props) => {
     <div className={styles.preloader__wrapper}>
       <div className={styles.preloader__text}>
         The first request may take 30–60 seconds because the API(mock-api) is deployed on
-        Render and uses json-server.
+        Render and uses json-server(The server may require some time to start after a period of inactivity.)
         <br />
         All subsequent requests will work faster.
       </div>
