@@ -26,4 +26,3 @@ const MyPosts = React.memo((props) => {
 )
 export default MyPosts;
 
-// В  Уроці 88 була тільки теорія по PureFunction 
