@@ -1,0 +1,9 @@
+.fieldWrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.summaryFormError {
+    color: red;
+    border: 2px solid red;
+}

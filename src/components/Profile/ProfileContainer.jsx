@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { getUserProfileThunkCreator, getUserStatusThunkCreator, savePhotoThunkCreator, updateUserStatusThunkCreator } from '../../redux/profile-reducer';
+import { getUserProfileThunkCreator, getUserStatusThunkCreator, savePhotoThunkCreator, saveProfile, saveProfileThunkCreator, updateUserStatusThunkCreator } from '../../redux/profile-reducer';
 import { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -84,7 +84,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, { getUserProfileThunkCreator, getUserStatusThunkCreator, updateUserStatusThunkCreator, savePhotoThunkCreator }),
+    connect(mapStateToProps, { getUserProfileThunkCreator, getUserStatusThunkCreator, updateUserStatusThunkCreator, savePhotoThunkCreator, saveProfileThunkCreator }),
     withRouter)(ProfileContainer)
 
 
