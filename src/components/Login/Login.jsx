@@ -7,9 +7,9 @@ import { Navigate } from "react-router-dom";
 
 
  const Login = (props) => {
+  debugger
   const customOnSubmit = (formData) => {
-    console.log(formData)
-    props.postLoginDataThunkCreator(formData.email, formData.password, formData.rememberMe)
+    props.postLoginDataThunkCreator(formData.email, formData.password, formData.rememberMe, formData.captcha)
   }
 
   if (props.isAuth) {
@@ -19,7 +19,7 @@ import { Navigate } from "react-router-dom";
   return (
     <div>
       <h1>Login</h1>
-      <LoginReduxForm onSubmit={customOnSubmit}/>
+      <LoginReduxForm onSubmit={customOnSubmit} captchaURL={props.captchaURL}/>
     </div>
   )
 };
@@ -27,7 +27,8 @@ import { Navigate } from "react-router-dom";
 let mapStateToProps = (state) => {
   
   return {
-    isAuth: state.authReducer.isAuth
+    isAuth: state.authReducer.isAuth,
+    captchaURL: state.authReducer.captchaURL
   }
 }
 
