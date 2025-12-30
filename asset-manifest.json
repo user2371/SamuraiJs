@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/SamuraiJs/static/css/main.f8ee1bc8.css",
-    "main.js": "/SamuraiJs/static/js/main.a7c70a24.js",
-    "static/js/453.68693753.chunk.js": "/SamuraiJs/static/js/453.68693753.chunk.js",
-    "static/css/450.2974a6dd.chunk.css": "/SamuraiJs/static/css/450.2974a6dd.chunk.css",
-    "static/js/450.bff14d27.chunk.js": "/SamuraiJs/static/js/450.bff14d27.chunk.js",
-    "static/media/main-background.jpg": "/SamuraiJs/static/media/main-background.c560aebf237db0e69cf9.jpg",
-    "static/media/Logo.svg": "/SamuraiJs/static/media/Logo.e6a3527c00c27a08b6d91867410f6e41.svg",
-    "index.html": "/SamuraiJs/index.html",
-    "main.f8ee1bc8.css.map": "/SamuraiJs/static/css/main.f8ee1bc8.css.map",
-    "main.a7c70a24.js.map": "/SamuraiJs/static/js/main.a7c70a24.js.map",
-    "453.68693753.chunk.js.map": "/SamuraiJs/static/js/453.68693753.chunk.js.map",
-    "450.2974a6dd.chunk.css.map": "/SamuraiJs/static/css/450.2974a6dd.chunk.css.map",
-    "450.bff14d27.chunk.js.map": "/SamuraiJs/static/js/450.bff14d27.chunk.js.map"
+    "main.css": "/Social-Network-petProject/static/css/main.e175c0b4.css",
+    "main.js": "/Social-Network-petProject/static/js/main.35db0e20.js",
+    "static/js/453.68693753.chunk.js": "/Social-Network-petProject/static/js/453.68693753.chunk.js",
+    "static/css/450.2974a6dd.chunk.css": "/Social-Network-petProject/static/css/450.2974a6dd.chunk.css",
+    "static/js/450.bff14d27.chunk.js": "/Social-Network-petProject/static/js/450.bff14d27.chunk.js",
+    "static/media/main-background.jpg": "/Social-Network-petProject/static/media/main-background.c560aebf237db0e69cf9.jpg",
+    "static/media/Logo.svg": "/Social-Network-petProject/static/media/Logo.e6a3527c00c27a08b6d91867410f6e41.svg",
+    "index.html": "/Social-Network-petProject/index.html",
+    "main.e175c0b4.css.map": "/Social-Network-petProject/static/css/main.e175c0b4.css.map",
+    "main.35db0e20.js.map": "/Social-Network-petProject/static/js/main.35db0e20.js.map",
+    "453.68693753.chunk.js.map": "/Social-Network-petProject/static/js/453.68693753.chunk.js.map",
+    "450.2974a6dd.chunk.css.map": "/Social-Network-petProject/static/css/450.2974a6dd.chunk.css.map",
+    "450.bff14d27.chunk.js.map": "/Social-Network-petProject/static/js/450.bff14d27.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f8ee1bc8.css",
-    "static/js/main.a7c70a24.js"
+    "static/css/main.e175c0b4.css",
+    "static/js/main.35db0e20.js"
   ]
 }
