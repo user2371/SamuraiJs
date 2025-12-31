@@ -17,11 +17,15 @@ const Dialogs = (props) => {
     }
 
     return (
+        
         <div className={styles.dialogs}>
+            
             <div className={styles.dialogItems}>
+                <div className={styles.dialogsTitle}>Contacts:</div>
                 {dialogsComponents} 
             </div>
             <div className={styles.dialogMessages}>
+                <div className={styles.chatTitle}>Chat</div>
                 <div>{messagesComponents}</div>
                 <DialogsMessageForm onSubmit={customOnSubmit}/>
             </div>

@@ -86,7 +86,7 @@ ul li {
 
 .btn:before,
 .btn:after {
-  border-radius: 80px;
+  border-radius: 10px;
 }
 
 .btn:before {

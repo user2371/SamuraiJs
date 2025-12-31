@@ -1,16 +1,17 @@
 
 .dialogMessage {
     box-sizing: border-box;
-    min-width: 200px;
+    min-width: 50px;
     max-width: 400px;
     word-wrap: break-word;
     position: relative;
-    color: green;
+    color: black;
     margin: 10px;
     margin-bottom: 15px;
-    padding: 5px;
-    border: 2px solid #ff8ae1ed;
-    background-color: bisque;
+    padding: 10px;
+    border: 2px solid black;
+    box-shadow: 5px -5px 10px 1px #1F2933;
+    background-color: white;
     border-radius: 10px;
 }
 .arrow {
@@ -19,7 +20,7 @@
     top: -29px;
     width: 0px;
     height: 0px;
-    border: 15px solid bisque;
+    border: 15px solid white;
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: transparent;
@@ -33,7 +34,8 @@
     top: -31px;
     width: 0px;
     height: 0px;
-    border: 15px solid #ff8ae1ed;
+    border: 15px solid black;
+    
     border-left-color: transparent;
     border-right-color: transparent;
     border-top-color: transparent;

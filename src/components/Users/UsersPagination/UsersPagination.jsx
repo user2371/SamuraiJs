@@ -53,7 +53,7 @@ let UsersPagination = function (props) {
                     <div className={styles.rightArrow} onClick={() => { props.onRightArrowClick() }}>&#62;</div>
                     <div className={styles.lastPageDoubleArrow} onClick={() => { props.onLastPageDoubleArrowClick() }}>Last page</div>
                     <div className={styles.pageNumberField}><input type="number" min="1" value={props.currentPage} onChange={(e) => { props.onNumberInputChange(e.target.value) }}></input>
-                        <span>of {props.pagesCount}</span></div>
+                        </div>
                 </div>
     )
 }

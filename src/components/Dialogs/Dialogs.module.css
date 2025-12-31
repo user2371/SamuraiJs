@@ -1,6 +1,7 @@
 .dialogs {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  gap: 10px;
 }
 
 /* .dialogsTextarea {
@@ -19,4 +20,29 @@
 
  */
 
+.dialogItems {
+  border: 2px solid black;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 5px -5px 10px 1px #1f2933;
+}
 
+.dialogsTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+.chatTitle {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.dialogMessages {
+  border: 2px solid black;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 5px -5px 10px 1px #1f2933;
+}

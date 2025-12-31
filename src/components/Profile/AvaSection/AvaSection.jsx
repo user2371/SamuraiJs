@@ -5,6 +5,7 @@ import UserStatusHooks from "./UserStatusHooks";
 import userIcon from "../../../assets/images/userIcon.png";
 
 const AvaSection = (props) => {
+  debugger
   function onMainPhotoSelected(e) {
     if (e.target.files.length) {
       const file = e.target.files[0];
@@ -30,8 +31,9 @@ const AvaSection = (props) => {
         </div>
         <UserStatusHooks
           userStatus={props.userStatus}
-          userId={1}
+          userId={props.userProfile.id}
           updateUserStatusThunkCreator={props.updateUserStatusThunkCreator}
+          isOwner={props.isOwner}
         />
       </div>
     );
