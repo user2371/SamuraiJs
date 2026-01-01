@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# SamuraiJS Social Network (Mock Backend Version)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Навчальний SPA-проєкт соціальної мережі, побудований на **React + Redux**, з **власним mock backend** 
 
-## Available Scripts
+Проєкт демонструє роботу з:
+- авторизацією    
+- protected routes    
+- асинхронними запитами    
+- Redux Thunk    
+- REST API    
+- деплоєм frontend + backend
+    
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Live Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend:** _([https://user2371.github.io/Social-Network-petProject/](https://user2371.github.io/Social-Network-petProject/))_
+    
+- **Backend (JSON Server на Render):**  
+    👉 [https://samurai-mock-api.onrender.com](https://samurai-mock-api.onrender.com)
+    
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🧠 Функціонал
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 👤 Авторизація
 
-### `npm run build`
+- Login / Logout    
+- Перевірка авторизації при старті додатку    
+- Persist auth після refresh    
+- Protected routes (`/profile`, `/dialogs`)
+    
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 👥 Users
+- Отримання списку користувачів    
+- Пагінація    
+- Follow / Unfollow    
+- Disable кнопок під час запиту    
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 🙍‍♂️ Profile
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Завантаження профілю користувача    
+- Статус користувача (читання / оновлення)    
+- Аватар 
+    
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🧱 Технології
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Frontend
+- React (class components)    
+- Redux    
+- Redux Thunk    
+- React Router v6    
+- Axios
+    
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Backend
+- JSON Server    
+- Render (deploy)    
+- REST API
+    
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🧩 Архітектура
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Redux reducers розділені по доменах    
+- Асинхронна логіка через thunk    
+- HOC `withAuthRedirect`    
+- Lazy loading (`React.lazy + Suspense`)    
+- Класичний підхід, як у legacy production-проєктах
